@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColUserIdToAccomodationsTable extends Migration
+class AddColAccomodationIdInImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class AddColUserIdToAccomodationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('accomodations', function (Blueprint $table) {
-            $table->unsignedBigInteger("user_id");   
+        Schema::table('images', function (Blueprint $table) {
+            $table->unsignedBigInteger('accomodation_id');
 
-            $table->foreign('user_id')
+            $table->foreign('accomodation_id')
                 ->references('id')
-                ->on('users')
+                ->on('accomodations')
                 ->onDelete('cascade');
         });
     }
@@ -30,9 +30,9 @@ class AddColUserIdToAccomodationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('accomodations', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropColumn('user_id');
+        Schema::table('images', function (Blueprint $table) {
+            $table->dropForeign(['accomodation_id']);
+            $table->dropColumn('accomodation_id');
         });
     }
 }
