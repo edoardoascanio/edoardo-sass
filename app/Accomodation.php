@@ -25,4 +25,7 @@ class Accomodation extends Model
     public function message() {
         return $this->hasMany('App\Message');
     }
+    public function view() {
+        return $this->hasMany('App\View');
+    }
 }
