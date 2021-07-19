@@ -19,4 +19,7 @@ class Accomodation extends Model
     public function images() {
         return $this->hasMany('App\Images');
     }
+    public function service() {
+        return $this->belongsToMany('App\Service');
+    }
 }
