@@ -28,6 +28,7 @@ class CreateAccomodationsTable extends Migration
             $table->string('street_name');
             $table->smallInteger('buildingNumber');
             $table->decimal('lat');
+            //2 numeri dopo la virgola-->da verificare
             $table->decimal('long');      
             $table->string('placeholder');            
             $table->timestamps();
