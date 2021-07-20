@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('guest')
+    ->namespace('Guest')
+    ->name("guest.")
+    ->group(function () {
+        // Route::get('', "HomeController@home")->name("home");
+        Route::get('index', "PostController@index")->name("index");
+        Route::get('show/{id}', "PostController@show")->name("show");
+    });
