@@ -2,6 +2,8 @@
 
 @section('content')
 
-<h1>Ciao da Show loggato ('view/logged/accomodation.show')</h1>
+<h1>{{ $accomodation->title }}</h1>
+<h1>{{ $accomodation->description }}</h1>
+
 
 @endsection

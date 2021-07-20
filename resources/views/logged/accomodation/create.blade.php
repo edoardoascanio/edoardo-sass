@@ -2,6 +2,12 @@
 
 @section('content')
 
-<h1>Ciao da Create ('view/logged/accomodation.create')</h1>
+ciao
+
+@foreach($services as $service)
+
+<h1>{{ $service->title }}</h1>
+    
+@endforeach
 
 @endsection

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\guest;
 
+use App\Accomodation;
 use App\Http\Controllers\Controller;
+use App\Service;
 use Illuminate\Http\Request;
 
 class AccomodationController extends Controller
@@ -14,7 +16,8 @@ class AccomodationController extends Controller
      */
     public function index()
     {
-        return view('guest.accomodation.index');
+        $accomodations = Accomodation::all();
+        return view('guest.accomodation.index', ['accomodations' => $accomodations]);
     }
  
     /**
@@ -24,7 +27,7 @@ class AccomodationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

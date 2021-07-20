@@ -2,6 +2,10 @@
 
 @section('content')
 
-<h1>Ciao da Index ('view/guest/accomodation.index')</h1>
+@foreach($accomodations as $accomodation)
+
+<h3>{{ $accomodation->title }}</h3>
+    
+@endforeach
 
 @endsection

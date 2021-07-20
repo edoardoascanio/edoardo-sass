@@ -26,11 +26,12 @@ class CreateAccomodationsTable extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('street_name');
-            $table->smallInteger('buildingNumber');
+            $table->string('zip');
+            $table->smallInteger('building_number');
             $table->decimal('lat');
             //2 numeri dopo la virgola-->da verificare
             $table->decimal('long');      
-            $table->string('placeholder');            
+            $table->string('placeholder')->nullable();            
             $table->timestamps();
         });
     }

@@ -15,10 +15,10 @@ class AccomodationController extends Controller
      */
     public function index()
     {
-        $accomodations = Accomodation::with('user')->get();
+        $accomodations = Accomodation::with('user')->paginate(10);
+        
         return response()->json([
             'success' => true,
-            'total_items' => count($accomodations),
             'result' => $accomodations,
         ]);
     }

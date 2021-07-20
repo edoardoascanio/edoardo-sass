@@ -14,26 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','HomeController@home');
+Route::get('/', 'HomeController@home');
 
 Auth::routes();
 
 Route::prefix('guest')
     ->namespace('Guest')
     ->name("guest.")
-    ->group(function () { 
+    ->group(function () {
         Route::get('index', "AccomodationController@index")->name("index");
         Route::get('show', "AccomodationController@show")->name("show");
     });
 
-    Route::prefix('logged')
+Route::prefix('logged')
     ->namespace('Logged')
     ->middleware('auth')
     ->name("logged.")
     ->group(function () {
         Route::get('create', "AccomodationController@create")->name("create");
         Route::post('store', "AccomodationController@store")->name("store");
-        Route::get('show', "AccomodationController@show")->name("show");
+        Route::get('show/{id}', "AccomodationController@show")->name("show");
         Route::get('edit', "AccomodationController@edit")->name("edit");
         // Route::match(["PUT", "PATCH"], "post/{id}/update", "PostController@update")->name("update");
         // Route::delete('show', "AccomodationController@destroy")->name("destroy");
