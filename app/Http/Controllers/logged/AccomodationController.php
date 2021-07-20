@@ -40,7 +40,6 @@ class AccomodationController extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'title' => 'required|string|min:5|max:85',
             'description' => 'required|string|min:5|max:2000',
@@ -63,15 +62,17 @@ class AccomodationController extends Controller
 
         $new_accomodation = new Accomodation();
 
+        $new_accomodation->lat = 90.00;
+        $new_accomodation->long = 90.00;
         $new_accomodation->fill($data);
         $new_accomodation->user_id = $request->user()->id;
         $new_accomodation->save();
 
         if (isset($data['services'])) {
-            $new_accomodation->services()->sync($data['services']);
+            $new_accomodation->service()->sync($data['services']);
         }
 
-        return redirect()->route('logged.show', ['accomodation_id' => $new_accomodation->id]);
+        return redirect()->route('logged.show', $new_accomodation->id);
 
     }
 

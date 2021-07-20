@@ -10,8 +10,8 @@ class Accomodation extends Model
 
         'title', 'description', 'number_rooms', 'number_bathrooms', 
         'number_beds', 'square_mts', 'visibility', 'country',
-        'price_per_night', 'city', 'street_name', 'buildingNumber',
-        'lat', 'long', 'placeholder', 'user_id'
+        'price_per_night', 'city', 'street_name', 'building_number',
+        'lat', 'long', 'placeholder', 'user_id', 'zip',
     ];
     public function user() {
         return $this->belongsTo("App\User");
