@@ -18,13 +18,24 @@ Route::get('/','HomeController@home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('guest')
     ->namespace('Guest')
     ->name("guest.")
+    ->group(function () { 
+        Route::get('index', "AccomodationController@index")->name("index");
+        Route::get('show', "AccomodationController@show")->name("show");
+    });
+
+    Route::prefix('logged')
+    ->namespace('Logged')
+    ->middleware('auth')
+    ->name("logged.")
     ->group(function () {
-        // Route::get('', "HomeController@home")->name("home");
-        Route::get('index', "PostController@index")->name("index");
-        Route::get('show/{id}', "PostController@show")->name("show");
+        Route::get('create', "AccomodationController@create")->name("create");
+        Route::post('store', "AccomodationController@store")->name("store");
+        Route::get('show', "AccomodationController@show")->name("show");
+        Route::get('edit', "AccomodationController@edit")->name("edit");
+        // Route::match(["PUT", "PATCH"], "post/{id}/update", "PostController@update")->name("update");
+        // Route::delete('show', "AccomodationController@destroy")->name("destroy");
+
     });

@@ -24,7 +24,7 @@ class AccomodationController extends Controller
      */
     public function create()
     {
-        //
+        return view('logged.accomodation.create');
     }
 
     /**
@@ -44,9 +44,9 @@ class AccomodationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('logged.accomodation.show');
     }
 
     /**
@@ -55,9 +55,9 @@ class AccomodationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('logged.accomodation.edit');
     }
 
     /**

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\guest;
+namespace App\Http\Controllers\Api;
 
+use App\Accomodation;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,9 +15,14 @@ class AccomodationController extends Controller
      */
     public function index()
     {
-        return view('guest.accomodation.index');
+        $accomodations = Accomodation::with('user')->get();
+        return response()->json([
+            'success' => true,
+            'total_items' => count($accomodations),
+            'result' => $accomodations,
+        ]);
     }
- 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,9 +50,9 @@ class AccomodationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('guest.accomodation.show');
+        //
     }
 
     /**
