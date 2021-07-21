@@ -22,7 +22,6 @@ return [
         'birth_date' => '1993-04-01',
         'password' => '12345678'
     ],
-    
     [
         'name' => 'Edoardo',
         'surname' => 'Ascanio',
@@ -30,7 +29,6 @@ return [
         'birth_date' => '1992-03-01',
         'password' => '12345678'
     ],
-
     [
         'name' => 'Giulia',
         'surname' => 'Maggio',
@@ -38,5 +36,4 @@ return [
         'birth_date' => '1991-02-01',
         'password' => '12345678'
     ],
-
 ];

@@ -4,6 +4,7 @@
 
 @include('layouts.components.error')
 
+<p>* tutti i campi sono obbligatori</p>
 
 <form action="{{ route("logged.store") }}" method="post" enctype="multipart/form-data">
 
@@ -42,6 +43,27 @@
     <div class="form-group">
         <label for="price_per_night">Prezzo per Notte</label>
         <input type="number" name="price_per_night" id="price_per_night" cols="30" rows="10" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label for="check_in">check in</label>
+        <select name="check_in" id="check_in">
+        <option value="" seletced> Scegli orario </option>
+        @for($i = 0; $i < 24; $i++)
+            <option value="{{ $i }}"> {{ $i }}:00 </option>
+        @endfor
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="check_out">check out</label>
+        <select name="check_out" id="check_out">
+        <option value="" seletced> Scegli orario </option>
+        @for($i = 0; $i < 24; $i++)
+            <option value="{{ $i }}"> {{ $i }}:00 </option>
+        @endfor
+        <option value="25"> 25</option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -84,11 +106,5 @@
     </div>
 
 </form>
-
-{{-- @foreach($services as $service)
-
-<h1>{{ $service->title }}</h1>
-
-@endforeach --}}
 
 @endsection

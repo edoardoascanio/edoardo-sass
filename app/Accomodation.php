@@ -11,20 +11,25 @@ class Accomodation extends Model
         'title', 'description', 'number_rooms', 'number_bathrooms', 
         'number_beds', 'square_mts', 'visibility', 'country',
         'price_per_night', 'city', 'street_name', 'building_number',
-        'lat', 'long', 'placeholder', 'user_id', 'zip',
+        'lat', 'long', 'placeholder', 'user_id', 'zip', 'check_in', 'check_out',
     ];
+
     public function user() {
         return $this->belongsTo("App\User");
     }
+
     public function images() {
         return $this->hasMany('App\Images');
     }
-    public function service() {
+
+    public function services() {
         return $this->belongsToMany('App\Service');
     }
+
     public function message() {
         return $this->hasMany('App\Message');
     }
+    
     public function view() {
         return $this->hasMany('App\View');
     }

@@ -34,8 +34,8 @@ Route::prefix('logged')
         Route::get('create', "AccomodationController@create")->name("create");
         Route::post('store', "AccomodationController@store")->name("store");
         Route::get('show/{id}', "AccomodationController@show")->name("show");
-        Route::get('edit', "AccomodationController@edit")->name("edit");
-        // Route::match(["PUT", "PATCH"], "post/{id}/update", "PostController@update")->name("update");
+        Route::get('edit/{id}', "AccomodationController@edit")->name("edit");
+        Route::match(["PUT", "PATCH"], "accomodation/{id}/update", "AccomodationController@update")->name("update");
         // Route::delete('show', "AccomodationController@destroy")->name("destroy");
 
     });
