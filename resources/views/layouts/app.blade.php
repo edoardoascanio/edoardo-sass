@@ -71,6 +71,14 @@
                 </div>
             </div>
         </nav>
+        <div class="container">
+        <a href="{{ route('guest.index') }}">appartamenti</a>
+        <a href="{{ route('logged.create') }}">crea</a>
+        <a href="{{ route('logged.ds') }}">dashboard</a>
+        
+        
+        
+        </div>
 
         <main class="py-4">
             @yield('content')
