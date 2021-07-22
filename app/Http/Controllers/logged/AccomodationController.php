@@ -4,6 +4,7 @@ namespace App\Http\Controllers\logged;
 
 use App\Accomodation;
 use App\Http\Controllers\Controller;
+use App\Message;
 use App\Service;
 use Illuminate\Http\Request;
 
@@ -63,7 +64,8 @@ class AccomodationController extends Controller
     public function show($id)
     {
         $accomodation = Accomodation::findOrFail($id);
-        return view('logged.accomodation.show', compact('accomodation'));
+        $messages = Message::where('accomodation_id', $id)->get();
+        return view('logged.accomodation.show', ['accomodation' => $accomodation, 'messages' => $messages]);
     }
 
     public function edit($id)
@@ -109,6 +111,16 @@ class AccomodationController extends Controller
 
     public function destroy($id)
     {
-        //
+        $accomodation = Accomodation::findOrFail($id);
+        $user_id = $accomodation->user_id;
+        $accomodation->services()->detach();
+        $accomodation->messages()->delete();
+        $accomodation->views()->delete();
+        // $accomodation->images()->delete();
+        // $accomodation->sponsorhip()->detach();
+
+        $accomodation->delete();
+        
+        return redirect()->route('logged.dashboard', $user_id);
     }
 }

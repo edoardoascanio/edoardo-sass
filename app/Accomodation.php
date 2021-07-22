@@ -26,11 +26,11 @@ class Accomodation extends Model
         return $this->belongsToMany('App\Service');
     }
 
-    public function message() {
+    public function messages() {
         return $this->hasMany('App\Message');
     }
     
-    public function view() {
+    public function views() {
         return $this->hasMany('App\View');
     }
 
