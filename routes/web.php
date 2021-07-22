@@ -18,12 +18,23 @@ Route::get('/', 'HomeController@home');
 
 Auth::routes();
 
+Route::prefix('message')
+    ->namespace('Message')
+    ->name('message.')
+    ->group(function () {
+        Route::get('/index/{id}', 'MessageController@index')->name('index');
+        Route::get('/new-message/{id}', 'MessageController@create')->name('create');
+        Route::post('/store/{id}', 'MessageController@store')->name('store');
+        route::get('show/{id}', 'MessageController@show')->name('show');
+
+    });
+
 Route::prefix('guest')
     ->namespace('Guest')
     ->name("guest.")
     ->group(function () {
         Route::get('index', "AccomodationController@index")->name("index");
-        Route::get('show', "AccomodationController@show")->name("show");
+        Route::get('show/{id}', "AccomodationController@show")->name("show");
     });
 
 Route::prefix('logged')
@@ -34,8 +45,8 @@ Route::prefix('logged')
         Route::get('create', "AccomodationController@create")->name("create");
         Route::post('store', "AccomodationController@store")->name("store");
         Route::get('show/{id}', "AccomodationController@show")->name("show");
-        Route::get('edit', "AccomodationController@edit")->name("edit");
-        // Route::match(["PUT", "PATCH"], "post/{id}/update", "PostController@update")->name("update");
-        // Route::delete('show', "AccomodationController@destroy")->name("destroy");
-
+        Route::get('edit/{id}', "AccomodationController@edit")->name("edit");
+        Route::match(["PUT", "PATCH"], "accomodation/{id}/update", "AccomodationController@update")->name("update");
+        Route::delete('destroy/{id}', "AccomodationController@destroy")->name("destroy");
+        Route::get('area-privata/{id}', "UserController@dashboard")->name("dashboard");
     });
