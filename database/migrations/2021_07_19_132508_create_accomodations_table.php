@@ -31,7 +31,8 @@ class CreateAccomodationsTable extends Migration
             $table->decimal('lat');
             //2 numeri dopo la virgola-->da verificare
             $table->decimal('long');      
-            $table->string('placeholder')->nullable();            
+            $table->string('placeholder')->nullable();   
+                     
             $table->timestamps();
         });
     }
