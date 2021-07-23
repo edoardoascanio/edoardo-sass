@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get ('/accomodation', 'Api\AccomodationController@index');
+Route::get ('/services', 'Api\ServiceController@index');
