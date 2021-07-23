@@ -12,16 +12,16 @@
             </text-input>
 
             <text-input label="N. minimo di stanze"
-            v-model="filters.minNRooms">
+            v-model="filters.min_num_rooms">
             </text-input>
 
             <text-input label="N. minimo di letti"
             v-model="filters.number_beds">
             </text-input>
 
-            <text-input label="Distanza"
+            <range-input label="Distanza"
             v-model="filters.distance">
-            </text-input>
+            </range-input>
           </div>
 
           <div v-for="service in services" :key="service.title">
@@ -72,7 +72,7 @@ export default {
       services: [],
       filters: {
         address: "",
-        minNRooms: "",
+        min_num_rooms: "",
         number_beds: "",
         distance: "",
         services: []
@@ -82,14 +82,15 @@ export default {
   },
   methods: {
     callAccomodation() {
-      axios.get("/api/accomodation/", {
+      axios.get("/api/accomodation", {
               params: {
-                number_beds: this.number_beds
+                ...this.filters
               }
             })
             .then(resp => {
               this.originalAccomodation = resp.data.results;
               this.filteredAccomodation = resp.data.results;
+              console.log('ciao');
             })
             .catch(er => console.log(er));
     },
