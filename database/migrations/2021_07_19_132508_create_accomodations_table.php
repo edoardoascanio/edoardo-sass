@@ -31,7 +31,6 @@ class CreateAccomodationsTable extends Migration
             $table->string('zip');
             $table->smallInteger('building_number');
             $table->decimal('lat');
-            //2 numeri dopo la virgola-->da verificare
             $table->decimal('long');      
             $table->string('placeholder')->nullable();
             $table->tinyinteger('check_in')->nullable();          
