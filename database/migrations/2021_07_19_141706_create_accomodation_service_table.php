@@ -18,10 +18,14 @@ class CreateAccomodationServiceTable extends Migration
 
 
             $table->foreignId("accomodation_id")
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
+    
 
             $table->foreignId("service_id")
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
+                
 
             $table->primary(['accomodation_id', 'service_id']);
 

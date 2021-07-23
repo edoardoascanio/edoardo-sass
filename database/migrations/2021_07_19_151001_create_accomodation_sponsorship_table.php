@@ -15,10 +15,12 @@ class CreateAccomodationSponsorshipTable extends Migration
     {
         Schema::create('accomodation_sponsorship', function (Blueprint $table) {
             $table->foreignId("accomodation_id")
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
 
             $table->foreignId("sponsorship_id")
-                ->constrained();
+                ->constrained()
+                ->onDelete('cascade');
 
             $table->primary(['accomodation_id', 'sponsorship_id']);
             $table->date('end_sponsorhip');

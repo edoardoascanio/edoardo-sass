@@ -11,7 +11,8 @@ class Accomodation extends Model
         'title', 'description', 'number_rooms', 'number_bathrooms', 
         'number_beds', 'square_mts', 'visibility', 'country',
         'price_per_night', 'city', 'street_name', 'building_number',
-        'lat', 'long', 'placeholder', 'user_id', 'zip', 'check_in', 'check_out',
+        'type_street',
+        'lat', 'long', 'placeholder', 'user_id', 'zip', 'province', 'check_in', 'check_out',
     ];
 
     public function user() {

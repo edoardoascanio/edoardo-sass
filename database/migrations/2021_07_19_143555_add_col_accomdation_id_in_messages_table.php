@@ -15,7 +15,8 @@ class AddColAccomdationIdInMessagesTable extends Migration
     {
         Schema::table('messages', function (Blueprint $table) {
             $table->foreignId("accomodation_id")
-            ->constrained();
+            ->constrained()
+            ->onDelete('cascade');
         });
     }
 

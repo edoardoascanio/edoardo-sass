@@ -14,7 +14,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-
         $users = [
             [
                 'name' => 'Alessio',
@@ -58,7 +57,7 @@ class UserSeeder extends Seeder
 
             $new_user->fill($user);
 
-            $new_user->password =  FacadesApp::make('hash')->make($user['password']);
+            $new_user->password = FacadesApp::make('hash')->make($user['password']);
 
             $new_user->save();
         }

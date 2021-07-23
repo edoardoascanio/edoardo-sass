@@ -15,7 +15,8 @@ class AddColAccomodationIdToViewsTable extends Migration
     {
         Schema::table('views', function (Blueprint $table) {
             $table->foreignId("accomodation_id")
-            ->constrained();
+            ->constrained()
+            ->onDelete('cascade');
         });
     }
 
