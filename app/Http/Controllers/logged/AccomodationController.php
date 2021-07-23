@@ -34,6 +34,7 @@ class AccomodationController extends Controller
             'visibility' => 'nullable|bool',
             'country' => 'required|string|min:3|max:50',
             'city' => 'required|string|min:3|max:50',
+            'province' => 'required|string|min:3|max:50',
             'zip' => 'required|string|size:5',
             'street_name' => 'required|string|min:3|max:150',
             'building_number' => 'required|string|min:1|max:10000',
@@ -89,6 +90,9 @@ class AccomodationController extends Controller
             'visibility' => 'nullable|bool',
             'country' => 'required|string|min:3|max:50',
             'city' => 'required|string|min:3|max:50',
+
+            'province' => 'required|string|min:3|max:50',
+
             'zip' => 'required|string|size:5',
             'street_name' => 'required|string|min:3|max:150',
             'building_number' => 'required|string|min:1|max:10000',

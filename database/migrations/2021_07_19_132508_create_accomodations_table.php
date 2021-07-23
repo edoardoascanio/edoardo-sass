@@ -25,11 +25,12 @@ class CreateAccomodationsTable extends Migration
             $table->boolean('visibility')->default(false);
             $table->string('country');
             $table->string('city');
+            $table->string('province');
+            $table->string('type_street');
             $table->string('street_name');
             $table->string('zip');
             $table->smallInteger('building_number');
             $table->decimal('lat');
-            //2 numeri dopo la virgola-->da verificare
             $table->decimal('long');      
             $table->string('placeholder')->nullable();
             $table->tinyinteger('check_in')->nullable();          

@@ -10,12 +10,18 @@ class AccomodationController extends Controller
 {
     public function index()
     {
+
+
         
-        $accomodations = Accomodation::with('user')->paginate(10);
-        
+        $accomodations = Accomodation::with('user')->with('sponsorship')->with('services')->paginate(10);
+
+        foreach ($accomodations as $accomodation) {
+            $accomodation->link = route('guest.show', ['id' => $accomodation->id]);
+        }
+
         return response()->json([
             'success' => true,
-            'result' => $accomodations,
+            'results' => $accomodations,
         ]);
     }
 
