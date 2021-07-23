@@ -26,7 +26,6 @@ Route::prefix('message')
         Route::get('/new-message/{id}', 'MessageController@create')->name('create');
         Route::post('/store/{id}', 'MessageController@store')->name('store');
         route::get('show/{id}', 'MessageController@show')->name('show');
-
     });
 
 Route::prefix('guest')

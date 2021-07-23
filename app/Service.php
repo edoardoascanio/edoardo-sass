@@ -8,9 +8,9 @@ class Service extends Model
 {
     protected $fillable = [
         'title', 'description'
-    ]; 
+    ];
 
-    public function accomodation() {
+    public function accomodation () {
         return $this->belongsToMany('App\Accomodation');
     }
 }

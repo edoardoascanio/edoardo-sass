@@ -5,18 +5,13 @@
                 {{ label }}
             </label>
 
-            <input 
+            <input class="form-control"
             :type="inputType"
-            class="form-control" 
-         
             :placeholder="placeholder"
             :value="value"
-            @input="$emit('input', $event.currentTarget.value)"
-            >
+            @input="$emit('input', $event.currentTarget.value)">
         </div>
-        
     </div>
-   
 </template>
 
 <script>

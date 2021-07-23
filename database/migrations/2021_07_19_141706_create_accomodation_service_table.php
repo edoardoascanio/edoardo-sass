@@ -15,20 +15,15 @@ class CreateAccomodationServiceTable extends Migration
     public function up()
     {
         Schema::create('accomodation_service', function (Blueprint $table) {
-
-
             $table->foreignId("accomodation_id")
                 ->constrained()
                 ->onDelete('cascade');
-    
 
             $table->foreignId("service_id")
                 ->constrained()
                 ->onDelete('cascade');
-                
 
             $table->primary(['accomodation_id', 'service_id']);
-
 
             $table->timestamps();
         });

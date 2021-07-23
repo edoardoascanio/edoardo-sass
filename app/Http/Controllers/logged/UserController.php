@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function dashboard($id) {
-        
         $accomodations = Accomodation::orderBy("created_at", "ASC")->where('user_id', $id)->get();
+
         return view('logged.user.dashboard', ['accomodations' => $accomodations]);
     }
 }

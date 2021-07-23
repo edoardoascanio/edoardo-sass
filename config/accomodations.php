@@ -20,7 +20,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 1,
       'check_in' => 12,
-      'check_out' => 10,
+      'check_out' => 10
    ],
    [
       'title' => 'Artists House - CENTRUM - Campo de fiori',
@@ -41,7 +41,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 2,
       'check_in' => 12,
-      'check_out' => 10,
+      'check_out' => 10
    ],
    [
       'title' => 'Domus Chiavari House',
@@ -62,7 +62,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 3,
       'check_in' => 13,
-      'check_out' => 10,
+      'check_out' => 10
    ],
    [
       'title' => 'Intero alloggio (loft)',
@@ -83,7 +83,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 4,
       'check_in' => 14,
-      'check_out' => 11,
+      'check_out' => 11
    ],
    [
       'title' => 'Graziosa mansarda con vista sul Pantheon',
@@ -104,7 +104,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 5,
       'check_in' => 15,
-      'check_out' => 11,
+      'check_out' => 11
    ],
    [
       'title' => "Colosseo's door",
@@ -125,7 +125,7 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 2,
       'check_in' => 12,
-      'check_out' => 10,
+      'check_out' => 10
    ],
    [
       'title' => "Loft Garden San Lorenzo",
@@ -146,6 +146,6 @@ return [
       'placeholder' => 'ciao',
       'user_id' => 4,
       'check_in' => 12,
-      'check_out' => 10,
+      'check_out' => 10
    ]
 ];

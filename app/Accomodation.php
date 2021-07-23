@@ -7,14 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Accomodation extends Model
 {
     protected $fillable = [
-
-        'title', 'description', 'number_rooms', 'number_bathrooms', 
+        'title', 'description', 'number_rooms', 'number_bathrooms',
         'number_beds', 'square_mts', 'visibility', 'country',
         'price_per_night', 'city', 'street_name', 'building_number',
-
-        'type_street',
-        'lat', 'long', 'placeholder', 'user_id', 'zip', 'province', 'check_in', 'check_out',
-
+        'type_street', 'lat', 'long', 'placeholder', 'user_id', 'zip',
+        'province', 'check_in', 'check_out'
     ];
 
     public function user() {
@@ -32,7 +29,7 @@ class Accomodation extends Model
     public function messages() {
         return $this->hasMany('App\Message');
     }
-    
+
     public function views() {
         return $this->hasMany('App\View');
     }

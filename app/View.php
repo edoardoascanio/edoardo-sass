@@ -10,7 +10,7 @@ class View extends Model
         'accomodation_id', 'user_ip'
     ];
 
-    public function accomodation() {
+    public function accomodation () {
         return $this->belongsTo('App\Accomodation');
     }
 }
