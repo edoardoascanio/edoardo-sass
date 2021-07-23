@@ -9,49 +9,44 @@ use Illuminate\Http\Request;
 class AccomodationController extends Controller
 {
     public function index() {
-        function filterNumbers($array, $filter, $column)
-        {
-            $resultsArray = [];
-
-            /* if (isset($filter)) {
-                foreach ($array as $item) {
-                    $item->link = route('guest.show', ['id' => $item->id]);
-                    if ($item[$column] >= $filter) {
-                        $resultsArray[] = $item;
-                    }
-                }
-            } else {
-                $resultsArray = $array;
-            } */
-
-            if ($filter == '') {
-                return $array;
-            }
-
-            foreach ($array as $item) {
-                if ($item[$column] >= $filter) {
-                    $resultsArray[] = $item;
-                }
-            }
-
-            return $resultsArray;
-        }
-
-
-        $accomodations = Accomodation::with('user')->with('sponsorship')->with('services')->get();
-
-        $number_beds_filter = isset($_GET['number_beds']) ? $_GET['number_beds'] : '';
-        $num_rooms_filter = isset($_GET['min_num_rooms']) ? $_GET['min_num_rooms'] : '';
+        $number_beds_filter = isset($_GET['number_beds']) ? $_GET['number_beds'] : 0;
+        $num_rooms_filter = isset($_GET['number_rooms']) ? $_GET['number_rooms'] : 0;
         $address = isset($_GET['address']) ? $_GET['address'] : '';
         $distance = isset($_GET['distance']) ? $_GET['distance'] : '';
         /* service è un array, cambiare $_GET */
         $services = isset($_GET['services']) ? $_GET['services'] : '';
 
-        $accomodationsFiltered1 = filterNumbers($accomodations, $number_beds_filter, 'number_beds');
+        $accomodations = Accomodation::where('number_rooms', '>', $number_beds_filter)->where('number_beds', '>', $number_beds_filter)->get();
 
-        $accomodationsFiltered2 = filterNumbers($accomodations, $num_rooms_filter, 'min_num_room');
+        $risultato = [];
+        $risultato2 = [];
 
-        $risultato = array_intersect($accomodationsFiltered1, $accomodationsFiltered2);
+        $risultatoFinale = [];
+
+        /* foreach ($accomodationsFiltered1 as $singleFilterAccomodation1) {
+            foreach ($accomodationsFiltered2 as $singleFilterAccomodation2) {
+                if ($singleFilterAccomodation1->id == $singleFilterAccomodation2->id) {
+                    $risultato[] = $singleFilterAccomodation2;
+                }
+            }
+        } */
+
+        /* foreach ($accomodations as $singleAccomodation) {
+            if ($singleAccomodation->number_beds >= $number_beds_filter) {
+                $risultato[] = $singleAccomodation;
+            }
+            if ($singleAccomodation->number_rooms >= $num_rooms_filter) {
+                $risultato2[] = $singleAccomodation;
+            }
+        }
+
+        foreach ($risultato as $singleFilterAccomodation1) {
+            foreach ($risultato2 as $singleFilterAccomodation2) {
+                if ($singleFilterAccomodation1->id == $singleFilterAccomodation2->id) {
+                    $risultatoFinale[] = $singleFilterAccomodation2;
+                }
+            }
+        } */
 
 
         /* if (isset($number_beds)) {
@@ -77,7 +72,7 @@ class AccomodationController extends Controller
 
         return response()->json([
             'success' => true,
-            'results' => $risultato,
+            'results' => $accomodations,
         ]);
     }
 

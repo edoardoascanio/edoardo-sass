@@ -1987,7 +1987,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       services: [],
       filters: {
         address: "",
-        min_num_rooms: "",
+        number_rooms: "",
         number_beds: "",
         distance: "",
         services: []
@@ -37849,11 +37849,11 @@ var render = function() {
                 _c("text-input", {
                   attrs: { label: "N. minimo di stanze" },
                   model: {
-                    value: _vm.filters.min_num_rooms,
+                    value: _vm.filters.number_rooms,
                     callback: function($$v) {
-                      _vm.$set(_vm.filters, "min_num_rooms", $$v)
+                      _vm.$set(_vm.filters, "number_rooms", $$v)
                     },
-                    expression: "filters.min_num_rooms"
+                    expression: "filters.number_rooms"
                   }
                 }),
                 _vm._v(" "),

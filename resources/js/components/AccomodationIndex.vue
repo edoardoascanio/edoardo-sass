@@ -12,7 +12,7 @@
             </text-input>
 
             <text-input label="N. minimo di stanze"
-            v-model="filters.min_num_rooms">
+            v-model="filters.number_rooms">
             </text-input>
 
             <text-input label="N. minimo di letti"
@@ -72,7 +72,7 @@ export default {
       services: [],
       filters: {
         address: "",
-        min_num_rooms: "",
+        number_rooms: "",
         number_beds: "",
         distance: "",
         services: []
