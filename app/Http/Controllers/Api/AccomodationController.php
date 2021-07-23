@@ -10,18 +10,27 @@ class AccomodationController extends Controller
 {
     public function index()
     {
-
-
-        
         $accomodations = Accomodation::with('user')->with('sponsorship')->with('services')->paginate(10);
+
+        $number_beds = isset($_GET['number_beds']) ? $_GET['number_beds'] : '';
+
+        $accomodationsFiltered = [];
+
 
         foreach ($accomodations as $accomodation) {
             $accomodation->link = route('guest.show', ['id' => $accomodation->id]);
+
+            if (is_null($number_beds)) {
+                $accomodationsFiltered[] = $accomodation;
+            }
+            if ($accomodation->number_beds >= $number_beds) {
+                $accomodationsFiltered[] = $accomodation;
+            }
         }
 
         return response()->json([
             'success' => true,
-            'results' => $accomodations,
+            'results' => $accomodationsFiltered,
         ]);
     }
 

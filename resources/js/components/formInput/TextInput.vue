@@ -28,7 +28,6 @@ export default {
         placeholder: String,
         inputType: {
             type: String,
-            
             default: "text"
         }
     }

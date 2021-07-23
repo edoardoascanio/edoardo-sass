@@ -19,5 +19,5 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get ('/accomodation', 'Api\AccomodationController@index');
-Route::get ('/services', 'Api\ServiceController@index');
+Route::get('/accomodation', 'Api\AccomodationController@index');
+Route::get('/services', 'Api\ServiceController@index');
