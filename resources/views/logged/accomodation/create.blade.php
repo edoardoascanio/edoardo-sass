@@ -50,7 +50,7 @@
         <select name="check_in" id="check_in">
         <option value="" seletced> Scegli orario </option>
         @for($i = 0; $i < 24; $i++)
-            <option value="{{ $i }}"> {{ $i }}:00 </option>
+            <option value="{{ $i }}"> {{ $i > 9 ? $i : '0' . $i }}:00 </option>
         @endfor
         </select>
     </div>
@@ -100,10 +100,10 @@
 
     {{-- services  --}}
     @foreach($services as $service)
-    <label for="{{ $service->title }}">
-        <input type="checkbox" name="services[]" value="{{ $service->id }}" id="{{ $service->title }}">
-        {{ $service->title }}
-    </label>
+        <label for="{{ $service->title }}">
+            <input type="checkbox" name="services[]" value="{{ $service->id }}" id="{{ $service->title }}">
+            {{ $service->title }}
+        </label>
     @endforeach
 
     <div class="form-group">

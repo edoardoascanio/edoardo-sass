@@ -1988,6 +1988,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AccomodationIndex",
   data: function data() {
@@ -1997,9 +2001,9 @@ __webpack_require__.r(__webpack_exports__);
       filters: {
         address: "",
         minNRooms: "",
-        minNBeds: "",
+        number_beds: "",
         distance: "",
-        services: null
+        services: []
       },
       services: [] // urlGetPosition: "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + accomodation.street_name + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6",
 
@@ -2007,16 +2011,22 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {},
   methods: {
+    callFilteredServices: function callFilteredServices() {
+      axios.get('/api/accomodation');
+    },
     callAccomodation: function callAccomodation() {
       var _this = this;
 
-      axios.get("/api/accomodation").then(function (resp) {
-        _this.originalAccomodation = resp.data.results.data;
-        _this.filteredAccomodation = resp.data.results.data;
-
-        if (_this.originalAccomodation.length > 1) {
-          _this.callMap();
+      axios.get("/api/accomodation/", {
+        params: {
+          number_beds: this.number_beds
         }
+      }).then(function (resp) {
+        _this.originalAccomodation = resp.data.results;
+        _this.filteredAccomodation = resp.data.results;
+        /* if(this.originalAccomodation.length > 0) {
+          this.callMap();
+        } */
       })["catch"](function (er) {
         console.log(er);
       });
@@ -37839,11 +37849,11 @@ var render = function() {
                 _c("text-input", {
                   attrs: { label: "N. minimo di letti" },
                   model: {
-                    value: _vm.filters.minNBeds,
+                    value: _vm.filters.number_beds,
                     callback: function($$v) {
-                      _vm.$set(_vm.filters, "minNBeds", $$v)
+                      _vm.$set(_vm.filters, "number_beds", $$v)
                     },
-                    expression: "filters.minNBeds"
+                    expression: "filters.number_beds"
                   }
                 }),
                 _vm._v(" "),
@@ -37856,120 +37866,82 @@ var render = function() {
                     },
                     expression: "filters.distance"
                   }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  [
-                    _c(
-                      "text-input",
-                      [
-                        _vm._l(_vm.services, function(service) {
-                          return _c("label", { key: service.id })
-                        }),
-                        _vm._v(" "),
-                        _vm.checkbox === "checkbox"
-                          ? _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.filters.services,
-                                  expression: "filters.services"
-                                }
-                              ],
-                              attrs: { type: "checkbox" },
-                              domProps: {
-                                checked: Array.isArray(_vm.filters.services)
-                                  ? _vm._i(_vm.filters.services, null) > -1
-                                  : _vm.filters.services
-                              },
-                              on: {
-                                change: function($event) {
-                                  var $$a = _vm.filters.services,
-                                    $$el = $event.target,
-                                    $$c = $$el.checked ? true : false
-                                  if (Array.isArray($$a)) {
-                                    var $$v = null,
-                                      $$i = _vm._i($$a, $$v)
-                                    if ($$el.checked) {
-                                      $$i < 0 &&
-                                        _vm.$set(
-                                          _vm.filters,
-                                          "services",
-                                          $$a.concat([$$v])
-                                        )
-                                    } else {
-                                      $$i > -1 &&
-                                        _vm.$set(
-                                          _vm.filters,
-                                          "services",
-                                          $$a
-                                            .slice(0, $$i)
-                                            .concat($$a.slice($$i + 1))
-                                        )
-                                    }
-                                  } else {
-                                    _vm.$set(_vm.filters, "services", $$c)
-                                  }
-                                }
-                              }
-                            })
-                          : _vm.checkbox === "radio"
-                          ? _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.filters.services,
-                                  expression: "filters.services"
-                                }
-                              ],
-                              attrs: { type: "radio" },
-                              domProps: {
-                                checked: _vm._q(_vm.filters.services, null)
-                              },
-                              on: {
-                                change: function($event) {
-                                  return _vm.$set(_vm.filters, "services", null)
-                                }
-                              }
-                            })
-                          : _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.filters.services,
-                                  expression: "filters.services"
-                                }
-                              ],
-                              attrs: { type: _vm.checkbox },
-                              domProps: { value: _vm.filters.services },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.filters,
-                                    "services",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                      ],
-                      2
-                    )
-                  ],
-                  1
-                )
+                })
               ],
               1
-            )
-          ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.services, function(service) {
+              return _c("div", { key: service.title }, [
+                _c("label", { attrs: { for: service.title } }, [
+                  _vm._v(
+                    "\n            " + _vm._s(service.title) + "\n            "
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filters.services,
+                        expression: "filters.services"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      name: service.title,
+                      id: service.title
+                    },
+                    domProps: {
+                      value: service.id,
+                      checked: Array.isArray(_vm.filters.services)
+                        ? _vm._i(_vm.filters.services, service.id) > -1
+                        : _vm.filters.services
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.filters.services,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = service.id,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.filters,
+                                "services",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.filters,
+                                "services",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.filters, "services", $$c)
+                        }
+                      }
+                    }
+                  })
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _c("input", {
+                attrs: { type: "button", value: "FILTRA" },
+                on: {
+                  click: function($event) {
+                    return _vm.callAccomodation()
+                  }
+                }
+              })
+            ])
+          ],
+          2
         )
       ])
     ]),
@@ -50667,8 +50639,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\giuli\OneDrive\Desktop\boolbnb-1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\giuli\OneDrive\Desktop\boolbnb-1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Boolean\class-33\exercises\boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Boolean\class-33\exercises\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
