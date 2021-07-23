@@ -75,11 +75,13 @@
         </div>
 
         <div class="form-group">
+
             <label for="province">Provincia</label>
             <input type="text" name="province" id="province" cols="30" rows="10" class="form-control">
         </div>
 
         <div class="form-group">
+
             <label for="zip">CAP</label>
             <input type="text" name="zip" id="zip" cols="30" rows="10" class="form-control" value="{{ $accomodation->zip }}">
         </div>

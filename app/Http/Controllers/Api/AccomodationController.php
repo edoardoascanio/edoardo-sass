@@ -10,6 +10,8 @@ class AccomodationController extends Controller
 {
     public function index()
     {
+
+
         
         $accomodations = Accomodation::with('user')->with('sponsorship')->with('services')->paginate(10);
 
