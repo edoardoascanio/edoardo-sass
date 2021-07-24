@@ -8,10 +8,9 @@ use Illuminate\Http\Request;
 
 class AccomodationController extends Controller
 {
-
     public function index(Request $request)
     {
-        $filters = $request->only(["number_beds", "number_rooms", "services", "title"]);
+        $filters = $request->only(["number_beds", "number_rooms", "services", "city"]);
         $accomodations = Accomodation::with(['services']);
 
         foreach ($filters as $filter => $value) {
@@ -39,6 +38,10 @@ class AccomodationController extends Controller
         }
 
         $filtered_accomodations = $accomodations->get();
+        foreach($filtered_accomodations as $accomodation) {
+            $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
+        }
+        
 
         return response()->json([
             'success' => true,

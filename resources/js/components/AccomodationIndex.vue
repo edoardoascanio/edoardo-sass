@@ -93,28 +93,25 @@ export default {
             })
             .catch(er => console.log(er));
     },
-    // callMap() {
-    //   this.originalAccomodation.forEach(accomodation => {
-    //   var compactStreetName = accomodation.street_name.replace(/\s/g, '');
+    callMap() {
+      this.originalAccomodation.forEach(accomodation => {
+      var compactStreetName = accomodation.street_name.replace(/\s/g, '');
 
-    //   var urlGetPosition = "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
+      var urlGetPosition = "https://boolbnbproxy.herokuapp.com/https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
 
-    //    axios
-    //     .get(urlGetPosition, {
-    //         headers: {
-    //         }
-    //      })
-    //     .then((resp) => {
+       axios
+        .get(urlGetPosition)
+        .then((resp) => {
 
-    //       // this.z.push(resp.data.results.position);
-    //      console.log(resp)
-    //     })
-    //     .catch((er) => {
-    //       console.log(er)
-    //     });
+          // this.z.push(resp.data.results.position);
+         console.log(resp)
+        })
+        .catch((er) => {
+          console.log(er)
+        });
 
-    //   });
-    // },
+      });
+    },
     callServices() {
       axios.get("/api/services")
           .then(resp => {
@@ -125,7 +122,7 @@ export default {
   mounted() {
     this.callAccomodation();
     this.callServices();
-    // this.callMap();
+    this.callMap();
   }
 };
 </script>

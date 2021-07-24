@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
 
-    <accomodation-index></accomodation-index>
+    <accomodation-index 
+    
+    ></accomodation-index>
 
     {{-- @foreach($accomodations as $accomodation)
 

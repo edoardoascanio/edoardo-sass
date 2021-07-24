@@ -2003,24 +2003,18 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(er);
       });
     },
-    // callMap() {
-    //   this.originalAccomodation.forEach(accomodation => {
-    //   var compactStreetName = accomodation.street_name.replace(/\s/g, '');
-    //   var urlGetPosition = "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
-    //    axios
-    //     .get(urlGetPosition, {
-    //         headers: {
-    //         }
-    //      })
-    //     .then((resp) => {
-    //       // this.z.push(resp.data.results.position);
-    //      console.log(resp)
-    //     })
-    //     .catch((er) => {
-    //       console.log(er)
-    //     });
-    //   });
-    // },
+    callMap: function callMap() {
+      this.originalAccomodation.forEach(function (accomodation) {
+        var compactStreetName = accomodation.street_name.replace(/\s/g, '');
+        var urlGetPosition = "https://boolbnbproxy.herokuapp.com/https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
+        axios.get(urlGetPosition).then(function (resp) {
+          // this.z.push(resp.data.results.position);
+          console.log(resp);
+        })["catch"](function (er) {
+          console.log(er);
+        });
+      });
+    },
     callServices: function callServices() {
       var _this2 = this;
 
@@ -2031,7 +2025,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.callAccomodation();
-    this.callServices(); // this.callMap();
+    this.callServices();
+    this.callMap();
   }
 });
 
