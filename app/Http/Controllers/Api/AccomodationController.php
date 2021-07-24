@@ -10,13 +10,17 @@ class AccomodationController extends Controller
 {
     public function index(Request $request)
     {
+ 
         // $filters = $request->only(["number_beds", "number_rooms", "services", "city"]);
         // $id_services = [];
 
+
         $accomodations = Accomodation::with('services')->with('sponsorship')->with('views')->paginate(10);
+
 
         // $query  = explode('&', $_SERVER['QUERY_STRING']);
         // $params = [];
+
 
         // foreach ($query as $param) {
         //     list($name, $value) = explode('=', $param, 2);
@@ -30,7 +34,9 @@ class AccomodationController extends Controller
         // }
 
 
+
         // ROOMS E BEDS NO SERVICES
+
         // foreach ($filters as $filter => $value) {
         //     if ($filter === 'number_beds') {
         //         if (!is_array($value)) {
@@ -82,6 +88,7 @@ class AccomodationController extends Controller
         //         $accomodations->where($filter, "LIKE", "%$value%");
         //     }
         // }
+
 
 
         //PROVA
@@ -203,14 +210,24 @@ class AccomodationController extends Controller
         // }
         // }
         // $accomodations = Accomodation::with('services')->paginate(10);
+
         $filtered_accomodations = $accomodations->get();
 
 
+
+        // // if(!$query){
+        // //     $filtered_accomodations = Accomodation::all();
+        // // }
+        // foreach ($filtered_accomodations as $accomodation) {
+        //     $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
+        // }
         return response()->json([
             'success' => true,
+
             // 'services' => $filters_services,
             // 'params' => $params,
             'results' => $filtered_accomodations,
+
         ]);
     }
 }
