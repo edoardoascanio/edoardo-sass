@@ -1972,41 +1972,84 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AccomodationIndex",
   data: function data() {
     return {
-      originalAccomodation: [],
-      filteredAccomodation: [],
+      originalAccomodations: [],
+      filteredAccomodations: [],
       services: [],
       filters: {
         city: "",
         number_rooms: "",
         number_beds: "",
-        distance: "",
+        distance: 20,
         services: []
-      } // urlGetPosition: "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + accomodation.street_name + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6",
-
+      }
     };
   },
   methods: {
-    callAccomodation: function callAccomodation() {
+    resetAccomodations: function resetAccomodations() {
+      this.filteredAccomodations = this.originalAccomodations;
+    },
+    callAccomodations: function callAccomodations() {
       var _this = this;
 
-      axios.get("/api/accomodation", {
-        params: this.filters
-      }).then(function (resp) {
-        _this.originalAccomodation = resp.data.results;
-        _this.filteredAccomodation = resp.data.results;
-        console.log(_this.originalAccomodation); // setTimeout(this.callMap(), 5000)
+      axios.get("/api/accomodation").then(function (resp) {
+        _this.originalAccomodations = resp.data.results.data;
+        _this.filteredAccomodations = resp.data.results.data;
+        console.log(_this.originalAccomodations);
+      })["catch"](function (er) {
+        return console.log(er);
+      });
+    },
+    filteredAccomodationsCall: function filteredAccomodationsCall() {
+      var _this2 = this;
+
+      axios.get("/api/accomodation/filtered").then(function (resp) {
+        _this2.filteredAccomodations = resp.data.results;
+        console.log(_this2.originalAccomodations);
       })["catch"](function (er) {
         return console.log(er);
       });
     },
     callMap: function callMap() {
-      console.log('ciao');
-      this.originalAccomodation.forEach(function (accomodation) {
-        var compactStreetName = accomodation.street_name.replace(/\s/g, '');
+      console.log("ciao");
+      this.originalAccomodations.forEach(function (accomodation) {
+        var compactStreetName = accomodation.street_name.replace(/\s/g, "");
         var urlGetPosition = "https://boolbnbproxy.herokuapp.com/https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
         axios.get(urlGetPosition).then(function (resp) {
           console.log(urlGetPosition); // this.z.push(resp.data.results.position);
@@ -2018,15 +2061,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     callServices: function callServices() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/services").then(function (resp) {
-        _this2.services = resp.data.results;
+        _this3.services = resp.data.results;
       });
     }
   },
   mounted: function mounted() {
-    this.callAccomodation();
+    this.callAccomodations();
     this.callServices(); // this.callMap();
   }
 });
@@ -2494,7 +2537,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -38277,16 +38319,50 @@ var render = function() {
                   }
                 }),
                 _vm._v(" "),
-                _c("range-input", {
-                  attrs: { label: "Distanza" },
-                  model: {
-                    value: _vm.filters.distance,
-                    callback: function($$v) {
-                      _vm.$set(_vm.filters, "distance", $$v)
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "forma-label", attrs: { for: "distance" } },
+                    [_vm._v("Distanza")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.filters.distance,
+                        expression: "filters.distance"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "range",
+                      id: "distance",
+                      name: "distance",
+                      min: "0",
+                      max: "40",
+                      step: "1",
+                      list: "tickmarks"
                     },
-                    expression: "filters.distance"
-                  }
-                })
+                    domProps: { value: _vm.filters.distance },
+                    on: {
+                      __r: function($event) {
+                        return _vm.$set(
+                          _vm.filters,
+                          "distance",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _vm._v(_vm._s(_vm.filters.distance))
+                ])
               ],
               1
             ),
@@ -38355,7 +38431,16 @@ var render = function() {
                 attrs: { type: "button", value: "FILTRA" },
                 on: {
                   click: function($event) {
-                    return _vm.callAccomodation()
+                    return _vm.filteredAccomodationsCall()
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "button", value: "RESET" },
+                on: {
+                  click: function($event) {
+                    return _vm.resetAccomodations()
                   }
                 }
               })
@@ -38370,7 +38455,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "col-4" },
-        _vm._l(_vm.filteredAccomodation, function(accomodation) {
+        _vm._l(_vm.filteredAccomodations, function(accomodation) {
           return _c(
             "div",
             {
@@ -38407,7 +38492,32 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("datalist", { attrs: { id: "tickmarks" } }, [
+      _c("option", { attrs: { value: "0" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "5" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "10" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "15" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "20" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "25" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "30" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "35" } }),
+      _vm._v(" "),
+      _c("option", { attrs: { value: "40" } })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39204,13 +39314,8 @@ var render = function() {
       _vm._v(" "),
       _c("input", {
         staticClass: "form-control",
-        attrs: { type: _vm.inputType, placeholder: _vm.placeholder },
-        domProps: { value: _vm.value },
-        on: {
-          input: function($event) {
-            return _vm.$emit("input", $event.currentTarget.value)
-          }
-        }
+        attrs: { type: "range", placeholder: _vm.placeholder },
+        domProps: { value: _vm.value }
       })
     ])
   ])
@@ -51671,15 +51776,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************!*\
   !*** ./resources/js/components/AddPosition.vue ***!
   \*************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddPosition_vue_vue_type_template_id_6862bacf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddPosition.vue?vue&type=template&id=6862bacf& */ "./resources/js/components/AddPosition.vue?vue&type=template&id=6862bacf&");
 /* harmony import */ var _AddPosition_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddPosition.vue?vue&type=script&lang=js& */ "./resources/js/components/AddPosition.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AddPosition_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AddPosition_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -51709,7 +51813,7 @@ component.options.__file = "resources/js/components/AddPosition.vue"
 /*!**************************************************************************!*\
   !*** ./resources/js/components/AddPosition.vue?vue&type=script&lang=js& ***!
   \**************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

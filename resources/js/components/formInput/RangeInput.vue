@@ -6,10 +6,9 @@
             </label>
 
             <input class="form-control"
-            :type="inputType"
+            type="range"
             :placeholder="placeholder"
-            :value="value"
-            @input="$emit('input', $event.currentTarget.value)">
+            :value="value">
         </div>
     </div>
 </template>
