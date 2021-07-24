@@ -35,5 +35,5 @@ return [
         'email' =>'giulia@gmail.com',
         'birth_date' => '1991-02-01',
         'password' => '12345678'
-    ],
+    ]
 ];

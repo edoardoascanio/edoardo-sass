@@ -8,63 +8,43 @@
         <form @submit.prevent="filterData">
           <div class="row">
             <text-input label="Ricerca Indirizzo Appartamento"
-            v-model="filters.address"
-            >
+            v-model="filters.address">
             </text-input>
 
             <text-input label="N. minimo di stanze"
-            v-model="filters.minNRooms"
-            >
+            v-model="filters.number_rooms">
             </text-input>
 
             <text-input label="N. minimo di letti"
-            v-model="filters.number_beds"
-            >
+            v-model="filters.number_beds">
             </text-input>
 
-            <text-input label="Distanza"
-            v-model="filters.distance"
-            >
-            </text-input>
-
-
+            <range-input label="Distanza"
+            v-model="filters.distance">
+            </range-input>
           </div>
 
           <div v-for="service in services" :key="service.title">
             <label :for="service.title">
               {{ service.title }}
-              <input type="checkbox" v-model="filters.services" :value="service.id" :name="service.title" :id="service.title">
+              <input type="checkbox"
+              v-model="filters.services" :value="service.id" :name="service.title" :id="service.title">
             </label>
           </div>
 
           <div>
             <input type="button" value="FILTRA" @click="callAccomodation()">
           </div>
-
         </form>
 
-
-
-      <!-- <label for="casa">
-        casa
-      </label>
-      <input type="checkbox" name="" id="casa">
-
-      <label for="garage">
-        garage
-      </label>
-      <input type="checkbox" name="" id="garage"> -->
-
-    </div>
+      </div>
     </div>
 
     <div class="row">
       <div class="col-4">
-        <div
-          v-for="accomodation in filteredAccomodation"
-          :key="accomodation.id"
-          class="card"
-          style="width: 100%">
+        <div class="card" style="width: 100%"
+        v-for="accomodation in filteredAccomodation"
+        :key="accomodation.id">
 
           <div class="card-body">
             <h5 class="card-title">{{ accomodation.title }}</h5>
@@ -83,66 +63,48 @@
 </template>
 
 <script>
-
 export default {
   name: "AccomodationIndex",
   data() {
     return {
       originalAccomodation: [],
       filteredAccomodation: [],
+      services: [],
       filters: {
         address: "",
-        minNRooms: "",
+        number_rooms: "",
         number_beds: "",
         distance: "",
         services: []
-      },
-      services: [],
+      }
       // urlGetPosition: "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + accomodation.street_name + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6",
     };
   },
-  computed: {
-  },
   methods: {
-    callFilteredServices() {
-
-
-      axios.get('/api/accomodation')
-    },
-
-
     callAccomodation() {
-      axios
-        .get("/api/accomodation/", {
-          params: {
-            number_beds: this.number_beds
-          }
-        })
-        .then(resp => {
-
-          this.originalAccomodation = resp.data.results;
-
-          this.filteredAccomodation = resp.data.results;
-          /* if(this.originalAccomodation.length > 0) {
-            this.callMap();
-          } */
-        })
-        .catch((er) => {
-          console.log(er)
-        });
+      axios.get("/api/accomodation", {
+              params: {
+                ...this.filters
+              }
+            })
+            .then(resp => {
+              this.originalAccomodation = resp.data.results;
+              this.filteredAccomodation = resp.data.results;
+              console.log('ciao');
+            })
+            .catch(er => console.log(er));
     },
     // callMap() {
     //   this.originalAccomodation.forEach(accomodation => {
     //   var compactStreetName = accomodation.street_name.replace(/\s/g, '');
-   
+
     //   var urlGetPosition = "https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
-    
+
     //    axios
     //     .get(urlGetPosition, {
     //         headers: {
-              
     //         }
-    //      }) 
+    //      })
     //     .then((resp) => {
 
     //       // this.z.push(resp.data.results.position);
@@ -154,24 +116,17 @@ export default {
 
     //   });
     // },
-
-    filteredData() {
-      
-    },
     callServices() {
       axios.get("/api/services")
-      .then(resp => {
-        this.services = resp.data.results;
-      })
+          .then(resp => {
+            this.services = resp.data.results;
+          });
     }
   },
-
   mounted() {
     this.callAccomodation();
-    // this.callMap();
     this.callServices();
-
-  },
+    // this.callMap();
+  }
 };
 </script>
-

@@ -12,9 +12,7 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-
+    public function run() {
         $users = [
             [
                 'name' => 'Alessio',
@@ -50,7 +48,7 @@ class UserSeeder extends Seeder
                 'email' => 'giulia@gmail.com',
                 'birth_date' => '1991-02-01',
                 'password' => '12345678'
-            ],
+            ]
         ];
 
         foreach ($users as $user) {
@@ -59,7 +57,6 @@ class UserSeeder extends Seeder
             $new_user->fill($user);
 
             $new_user->password = FacadesApp::make('hash')->make($user['password']);
-
 
             $new_user->save();
         }

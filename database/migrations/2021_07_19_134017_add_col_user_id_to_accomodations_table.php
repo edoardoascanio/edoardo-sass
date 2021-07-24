@@ -14,7 +14,7 @@ class AddColUserIdToAccomodationsTable extends Migration
     public function up()
     {
         Schema::table('accomodations', function (Blueprint $table) {
-            $table->unsignedBigInteger("user_id");   
+            $table->unsignedBigInteger("user_id");
 
             $table->foreign('user_id')
                 ->references('id')

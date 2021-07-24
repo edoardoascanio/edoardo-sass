@@ -12,8 +12,7 @@ class AccomodationSeeder extends Seeder
     *
     * @return void
     */
-   public function run()
-   {
+   public function run() {
       $accomodations = [
          [
             'title' => 'L\'intero alloggio (casa)',
@@ -36,7 +35,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 1,
             'check_in' => 12,
-            'check_out' => 10,
+            'check_out' => 10
          ],
          [
             'title' => 'Artists House - CENTRUM - Campo de fiori',
@@ -59,7 +58,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 2,
             'check_in' => 12,
-            'check_out' => 10,
+            'check_out' => 10
          ],
          [
             'title' => 'Domus Chiavari House',
@@ -82,7 +81,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 3,
             'check_in' => 13,
-            'check_out' => 10,
+            'check_out' => 10
          ],
          [
             'title' => 'Intero alloggio (loft)',
@@ -105,7 +104,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 4,
             'check_in' => 14,
-            'check_out' => 11,
+            'check_out' => 11
          ],
          [
             'title' => 'Graziosa mansarda con vista sul Pantheon',
@@ -128,7 +127,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 5,
             'check_in' => 15,
-            'check_out' => 11,
+            'check_out' => 11
          ],
          [
             'title' => "Colosseo's door",
@@ -151,7 +150,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 2,
             'check_in' => 12,
-            'check_out' => 10,
+            'check_out' => 10
          ],
          [
             'title' => "Loft Garden San Lorenzo",
@@ -174,7 +173,7 @@ class AccomodationSeeder extends Seeder
             'placeholder' => 'ciao',
             'user_id' => 4,
             'check_in' => 12,
-            'check_out' => 10,
+            'check_out' => 10
          ]
       ];
 

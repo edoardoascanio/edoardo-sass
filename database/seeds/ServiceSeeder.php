@@ -10,8 +10,7 @@ class ServiceSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         $services = [
             [
                 'description' => 'Situato a due passi del centro storico di Roma e dalla Stazione Trastevere questo delizioso loft gode di una location privilegiata che permette di esplorare la città a piedi.',
@@ -68,8 +67,7 @@ class ServiceSeeder extends Seeder
             [
                 'description' => 'Situato a due passi del centro storico di Roma e dalla Stazione Trastevere questo delizioso loft gode di una location privilegiata che permette di esplorare la città a piedi.',
                 'title' => 'cassaforte'
-            ],
-
+            ]
         ];
 
         foreach ($services as $service) {

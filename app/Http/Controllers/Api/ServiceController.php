@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function index () {
-      $services = Service::all();
+  public function index () {
+    $services = Service::all();
 
-      return response()->json([
-        'success' => true,
-        'results' => $services,
+    return response()->json([
+      'success' => true,
+      'results' => $services,
     ]);
-    }
+  }
 }

@@ -11,8 +11,7 @@ class CreateAccomodationsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('accomodations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -31,10 +30,10 @@ class CreateAccomodationsTable extends Migration
             $table->string('zip');
             $table->smallInteger('building_number');
             $table->decimal('lat');
-            $table->decimal('long');      
+            $table->decimal('long');
             $table->string('placeholder')->nullable();
-            $table->tinyinteger('check_in')->nullable();          
-            $table->tinyInteger('check_out')->nullable();          
+            $table->tinyInteger('check_in')->nullable();
+            $table->tinyInteger('check_out')->nullable();
             $table->timestamps();
         });
     }

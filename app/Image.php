@@ -8,9 +8,9 @@ class Image extends Model
 {
     protected $fillable = [
         'url_img', 'alt', 'accomodation_id'
-    ]; 
-    
-    public function accomodation() {
+    ];
+
+    public function accomodation () {
         return $this->belongsTo('App\Accomodation');
     }
 }
