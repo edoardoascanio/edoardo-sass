@@ -53,7 +53,6 @@
 
     <div class="form-group">
       <label for="street_name">Tipo di via</label>
-
       <select id="type_street" name="type_street" v-model="address.type_street">
         <option value="via" selected>Via</option>
         <option value="piazza">Piazza</option>
@@ -92,32 +91,15 @@
       type="text"
       v-model="address.position_lat"
       name="lat"
-      
       id="lat"
     />
     <input
       style="display: none"
       type="text"
       v-model="address.position_lon"
-      
-
       name="lon"
       id="lon"
     />
-
-    <!-- <label
-      v-for="service in services"
-      :key="service.id"
-      :for="service.title + '-' + service.id"
-    >
-      <input
-        type="checkbox"
-        name="services[]"
-        :value="service.id"
-        :id="service.title + '-' + service.id"
-      />
-      {{ service.title }}
-    </label> -->
 
     <button class="form-control btn btn-success text-capitalize" @click.prevent="callPosition()">Crea</button>
 
@@ -127,7 +109,6 @@
         type="submit"
         value="Crea"
         class="form-control btn btn-success text-capitalize"
-        
       />
     </div>
   </div>

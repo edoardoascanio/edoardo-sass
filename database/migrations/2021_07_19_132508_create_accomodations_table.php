@@ -29,8 +29,8 @@ class CreateAccomodationsTable extends Migration
             $table->string('street_name');
             $table->string('zip');
             $table->smallInteger('building_number');
-            $table->decimal('lat');
-            $table->decimal('long');
+            $table->string('lat');
+            $table->string('lon');
             $table->string('placeholder')->nullable();
             $table->tinyInteger('check_in')->nullable();
             $table->tinyInteger('check_out')->nullable();

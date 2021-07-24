@@ -45,12 +45,8 @@ class AccomodationController extends Controller
         $data = $request->all();
 
         $new_accomodation = new Accomodation();
-        // $new_accomodation->lat = strval($request->lat);
-        // $new_accomodation->lon = strval($request->lon);
+       
         $new_accomodation->fill($data);
-
-        // $new_accomodation->lat = 45.000;
-        // $new_accomodation->lon = 45.000;
 
         $new_accomodation->user_id = $request->user()->id;
 
