@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<div class="container">
 @include('layouts.components.error')
 
 <p>* tutti i campi sono obbligatori</p>
@@ -62,11 +62,10 @@
         @for($i = 0; $i < 24; $i++)
             <option value="{{ $i }}"> {{ $i }}:00 </option>
         @endfor
-        <option value="25"> 25</option>
         </select>
     </div>
 
-    <div class="form-group">
+    {{-- <div class="form-group">
         <label for="country">Paese</label>
         <input type="text" name="country" id="country" cols="30" rows="10" class="form-control">
     </div>
@@ -94,7 +93,8 @@
     <div class="form-group">
         <label for="building_number">Numero Civico</label>
         <input type="number" name="building_number" id="building_number" cols="30" rows="10" class="form-control">
-    </div>
+    </div> --}}
+
 
     {{-- AGGIUNGERE PLACEHOLDER IMG --}}
 
@@ -104,12 +104,16 @@
             <input type="checkbox" name="services[]" value="{{ $service->id }}" id="{{ $service->title }}">
             {{ $service->title }}
         </label>
-    @endforeach
+    @endforeach 
 
-    <div class="form-group">
+    <add-position> <add-position>
+    {{-- <div class="form-group">
         <input type="submit" value="Crea" class="form-control btn btn-success text-capitalize">
-    </div>
+    </div> --}}
+{{-- <add-positions-to-create/> --}}
 
 </form>
+</div>
+
 
 @endsection

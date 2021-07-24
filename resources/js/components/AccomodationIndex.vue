@@ -89,22 +89,26 @@ export default {
             .then(resp => {
               this.originalAccomodation = resp.data.results;
               this.filteredAccomodation = resp.data.results;
-              console.log(this.filters.services)
+              console.log(this.originalAccomodation)
+              // setTimeout(this.callMap(), 5000)
+              
+
             })
             .catch(er => console.log(er));
     },
     callMap() {
+      console.log('ciao')
       this.originalAccomodation.forEach(accomodation => {
       var compactStreetName = accomodation.street_name.replace(/\s/g, '');
 
       var urlGetPosition = "https://boolbnbproxy.herokuapp.com/https://api.tomtom.com/search/2/geocode/" + accomodation.province + "%20" + accomodation.city + "%20" + accomodation.type_street + "%20" + compactStreetName + "%20" + accomodation.building_number + ".json?Key=t4QufcKAvdkiBeKqaOB5kwMYk71Rx8b6";
-
        axios
         .get(urlGetPosition)
         .then((resp) => {
+          console.log(urlGetPosition)
 
           // this.z.push(resp.data.results.position);
-         console.log(resp)
+         console.log(resp.data.result[0].position)
         })
         .catch((er) => {
           console.log(er)
@@ -122,7 +126,7 @@ export default {
   mounted() {
     this.callAccomodation();
     this.callServices();
-    this.callMap();
+    // this.callMap();
   }
 };
 </script>
