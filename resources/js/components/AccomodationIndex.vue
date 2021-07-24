@@ -7,8 +7,8 @@
 
         <form @submit.prevent="filterData">
           <div class="row">
-            <text-input label="Ricerca Indirizzo Appartamento"
-            v-model="filters.address">
+            <text-input label="Città"
+            v-model="filters.city">
             </text-input>
 
             <text-input label="N. minimo di stanze"
@@ -24,11 +24,11 @@
             </range-input>
           </div>
 
-          <div v-for="service in services" :key="service.title">
-            <label :for="service.title">
+          <div v-for="service in services" :key="service.city">
+            <label :for="service.city">
               {{ service.title }}
               <input type="checkbox"
-              v-model="filters.services" :value="service.id" :name="service.title" :id="service.title">
+              v-model="filters.services" :value="service.id" :name="service.city" :id="service.city">
             </label>
           </div>
 
@@ -71,7 +71,7 @@ export default {
       filteredAccomodation: [],
       services: [],
       filters: {
-        address: "",
+        city: "",
         number_rooms: "",
         number_beds: "",
         distance: "",
@@ -83,14 +83,13 @@ export default {
   methods: {
     callAccomodation() {
       axios.get("/api/accomodation", {
-              params: {
-                ...this.filters
-              }
+              params: this.filters
+              
             })
             .then(resp => {
               this.originalAccomodation = resp.data.results;
               this.filteredAccomodation = resp.data.results;
-              console.log('ciao');
+              console.log(this.filters.services)
             })
             .catch(er => console.log(er));
     },

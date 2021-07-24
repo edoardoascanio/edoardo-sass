@@ -1908,12 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -1986,7 +1980,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       filteredAccomodation: [],
       services: [],
       filters: {
-        address: "",
+        city: "",
         number_rooms: "",
         number_beds: "",
         distance: "",
@@ -2000,11 +1994,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       axios.get("/api/accomodation", {
-        params: _objectSpread({}, this.filters)
+        params: this.filters
       }).then(function (resp) {
         _this.originalAccomodation = resp.data.results;
         _this.filteredAccomodation = resp.data.results;
-        console.log('ciao');
+        console.log(_this.filters.services);
       })["catch"](function (er) {
         return console.log(er);
       });
@@ -37836,13 +37830,13 @@ var render = function() {
               { staticClass: "row" },
               [
                 _c("text-input", {
-                  attrs: { label: "Ricerca Indirizzo Appartamento" },
+                  attrs: { label: "Città" },
                   model: {
-                    value: _vm.filters.address,
+                    value: _vm.filters.city,
                     callback: function($$v) {
-                      _vm.$set(_vm.filters, "address", $$v)
+                      _vm.$set(_vm.filters, "city", $$v)
                     },
-                    expression: "filters.address"
+                    expression: "filters.city"
                   }
                 }),
                 _vm._v(" "),
@@ -37883,8 +37877,8 @@ var render = function() {
             ),
             _vm._v(" "),
             _vm._l(_vm.services, function(service) {
-              return _c("div", { key: service.title }, [
-                _c("label", { attrs: { for: service.title } }, [
+              return _c("div", { key: service.city }, [
+                _c("label", { attrs: { for: service.city } }, [
                   _vm._v(
                     "\n            " + _vm._s(service.title) + "\n            "
                   ),
@@ -37899,8 +37893,8 @@ var render = function() {
                     ],
                     attrs: {
                       type: "checkbox",
-                      name: service.title,
-                      id: service.title
+                      name: service.city,
+                      id: service.city
                     },
                     domProps: {
                       value: service.id,
@@ -50761,8 +50755,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Boolean\class-33\exercises\boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Boolean\class-33\exercises\boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/alessiotonielli/Boolean/ProgettoFinale/boolbnb/boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/alessiotonielli/Boolean/ProgettoFinale/boolbnb/boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
