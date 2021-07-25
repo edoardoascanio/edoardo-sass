@@ -31,7 +31,7 @@
                 list="tickmarks"
                 v-model="filters.distance"
               />
-              
+
               <datalist id="tickmarks">
                 <option value="0"></option>
                 <option value="5"></option>
@@ -81,10 +81,16 @@
           :key="accomodation.id"
         >
           <div class="card-body">
-
-            <img :src="accomodation.placeholder" alt="..." class="img-thumbnail">
+            <img
+              :src="accomodation.placeholder"
+              alt="..."
+              class="img-thumbnail"
+            />
             <h5 class="card-title">{{ accomodation.title }}</h5>
             <p class="card-text">{{ accomodation.description }}</p>
+            <div>
+              <span class="badge badge-primary ml-1" v-for="service in accomodation.services"> {{ service.title }} </span>
+            </div>
             <a :href="accomodation.link" class="card-link">Visualizza</a>
           </div>
         </div>
@@ -131,12 +137,11 @@ export default {
     filteredAccomodationsCall() {
       axios
         .get("/api/accomodation/filtered", {
-          params: this.filters
+          params: this.filters,
         })
         .then((resp) => {
           this.filteredAccomodations = resp.data.results;
           console.log(this.filters);
-
         })
         .catch((er) => console.log(er));
     },

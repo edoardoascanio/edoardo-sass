@@ -2007,6 +2007,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AccomodationIndex",
   data: function data() {
@@ -38481,6 +38487,18 @@ var render = function() {
                 _c("p", { staticClass: "card-text" }, [
                   _vm._v(_vm._s(accomodation.description))
                 ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  _vm._l(accomodation.services, function(service) {
+                    return _c(
+                      "span",
+                      { staticClass: "badge badge-primary ml-1" },
+                      [_vm._v(" " + _vm._s(service.title) + " ")]
+                    )
+                  }),
+                  0
+                ),
                 _vm._v(" "),
                 _c(
                   "a",
