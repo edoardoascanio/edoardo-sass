@@ -31,7 +31,7 @@ class CreateAccomodationsTable extends Migration
             $table->smallInteger('building_number');
             $table->string('lat');
             $table->string('lon');
-            $table->string('placeholder')->nullable();
+            $table->mediumText('placeholder')->nullable();
             $table->tinyInteger('check_in')->nullable();
             $table->tinyInteger('check_out')->nullable();
             $table->timestamps();

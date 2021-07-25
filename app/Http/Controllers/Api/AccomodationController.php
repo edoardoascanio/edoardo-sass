@@ -15,7 +15,7 @@ class AccomodationController extends Controller
         // $id_services = [];
 
 
-        $accomodations = Accomodation::with('services')->with('sponsorship')->with('views')->paginate(10);
+        $accomodations = Accomodation::with('services')->with('sponsorship')->with('views')->where('visibility', 1)->paginate(50);
 
 
         // $query  = explode('&', $_SERVER['QUERY_STRING']);
@@ -133,6 +133,7 @@ class AccomodationController extends Controller
         // }
         foreach ($accomodations as $accomodation) {
             $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
+            $accomodation->placeholder = $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg');
         }
         return response()->json([
             'success' => true,
@@ -149,9 +150,11 @@ class AccomodationController extends Controller
         $filters = $request->only(["number_beds", "number_rooms", "city"]);
 
         if (count($filters) == 0) {
-            $accomodations = Accomodation::with('services')->with('sponsorship')->with('views')->paginate(10);
+            $accomodations = Accomodation::with('services')->with('sponsorship')->with('views')->where('visibility', 1)->paginate(10);
             foreach ($accomodations as $accomodation) {
                 $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
+                $accomodation->placeholder = $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg');
+
             }
             return response()->json([
                 'success' => true,
@@ -179,7 +182,7 @@ class AccomodationController extends Controller
         // $query  = explode('&', $_SERVER['QUERY_STRING']);
         // $params = [];
 
-        $accomodations = Accomodation::with('services');
+        $accomodations = Accomodation::with('services')->where('visibility', 1);
         // $pivot = $accomodations->join();
 
         foreach ($filters as $filter => $value) {
@@ -193,23 +196,22 @@ class AccomodationController extends Controller
                     $value = explode(",", $value);
                 }
                 $accomodations->where('number_rooms', '>=', $value);
+            } else if ($filter === "services") {
+                if (!is_array($value)) {
+                    $value = explode(",", $value);
+
+                }        
+                $accomodations->join("accomodation_service", "accomodations.id", "=", "accomodation_service.accomodation_id")
+                ->where("accomodation_service.service_id", $filter);
+
             } else {
                 $accomodations->where($filter, "LIKE", "%$value%");
             }
+             
         }
 
-        // } else if ($filter === "services") {
-        //     if (!is_array($value)) {
-        //         $value = explode(",", $value);
-        //     }
-
-        //     $accomodations->join("accomodation_service", "accomodations.id", "=", "accomodation_service.accomodation_id")
-        //         ->whereIn("accomodation_service.service_id", $params['1']);
-        // } else {
-        //     $accomodations->where($filter, "LIKE", "%$value%");
-        // }
-        // }
-        // $accomodations = Accomodation::with('services')->paginate(10);
+        
+        // $accomodations = Accomodation::with('services')->paginated(10);
 
         $filtered_accomodations = $accomodations->get();
 
@@ -218,14 +220,16 @@ class AccomodationController extends Controller
         // // if(!$query){
         // //     $filtered_accomodations = Accomodation::all();
         // // }
-        // foreach ($filtered_accomodations as $accomodation) {
-        //     $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
-        // }
+        foreach ($filtered_accomodations as $accomodation) {
+            $accomodation->link = route("guest.show", ["id" => $accomodation->id]);
+            $accomodation->placeholder = $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg');
+
+        }
         return response()->json([
             'success' => true,
 
-            // 'services' => $filters_services,
-            // 'params' => $params,
+            // 'result' => $result,
+            'params' => $params,
             'results' => $filtered_accomodations,
 
         ]);

@@ -64,6 +64,11 @@
             </select>
         </div>
 
+        {{-- <div class="form-group">
+        <label for="placeholder">Carica img di copertina</label>
+            <input type="file" name="placeholder" id="placeholder" accept=".jpg, .png, .svg, .jpeg">
+        </div> --}}
+
         <div class="form-group">
             <label for="country">Paese</label>
             <input type="text" name="country" id="country" cols="30" rows="10" class="form-control" value="{{ $accomodation->country }}">
@@ -77,7 +82,7 @@
         <div class="form-group">
 
             <label for="province">Provincia</label>
-            <input type="text" name="province" id="province" cols="30" rows="10" class="form-control">
+            <input type="text" name="province" id="province" cols="30" rows="10" class="form-control" value="{{ $accomodation->province }}">
         </div>
 
         <div class="form-group">
@@ -107,7 +112,7 @@
         @endforeach
 
         <div class="form-group">
-            <input type="submit" value="Crea" class="form-control btn btn-success text-capitalize">
+            <input type="submit" value="Modifica" class="form-control btn btn-success text-capitalize">
         </div>
 
     </form>

@@ -47,15 +47,15 @@
             <div class="mb-3">{{ filters.distance }}</div>
           </div>
 
-          <div v-for="service in services" :key="service.city">
-            <label :for="service.city">
+          <div v-for="service in services" :key="service.id">
+            <label :for="service.title">
               {{ service.title }}
               <input
                 type="checkbox"
                 v-model="filters.services"
                 :value="service.id"
-                :name="service.city"
-                :id="service.city"
+                :name="service.title"
+                :id="service.title"
               />
             </label>
           </div>
@@ -81,6 +81,8 @@
           :key="accomodation.id"
         >
           <div class="card-body">
+
+            <img :src="accomodation.placeholder" alt="..." class="img-thumbnail">
             <h5 class="card-title">{{ accomodation.title }}</h5>
             <p class="card-text">{{ accomodation.description }}</p>
             <a :href="accomodation.link" class="card-link">Visualizza</a>
@@ -128,10 +130,13 @@ export default {
     },
     filteredAccomodationsCall() {
       axios
-        .get("/api/accomodation/filtered")
+        .get("/api/accomodation/filtered", {
+          params: this.filters
+        })
         .then((resp) => {
           this.filteredAccomodations = resp.data.results;
-          console.log(this.originalAccomodations);
+          console.log(this.filters);
+
         })
         .catch((er) => console.log(er));
     },

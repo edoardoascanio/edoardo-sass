@@ -8,16 +8,21 @@
     <h2>{{ $accomodation->description }}</h2>
     <h2>{{ $accomodation->city }} - {{ $accomodation->streat_name }} - {{ $accomodation->zip }}</h2>
     <a href="{{ route('logged.edit', $accomodation->id) }}" class="card-link btn btn-primary">Modifica</a><br>
-    {{-- <form action="{{ route('logged.update', $accomodation->id) }}" method="post">
+    <form action="{{ route('logged.visibility', $accomodation->id) }}" method="post">
         @csrf
         @method('PATCH')
-        <button type="submit">
-            <div class="custom-control custom-switch">
-                <input name="visibility"  type="checkbox" class="custom-control-input" id="customSwitch1">
-                <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
-            </div>
+            
+                <label for="customSwitch1">Visibile
+                <input name="visibility"  type="radio" value="1" id="true" {{ $accomodation->visibility == true ? 'checked' : "" }}>
+                </label>
+            
+                <label for="customSwitch1">Non visibile
+                <input name="visibility"  type="radio" value="0" id="false" {{ $accomodation->visibility == false ? 'checked' : "" }}>
+                </label>
+            
+        <button type="submit">Applica
         </button>
-    </form> --}}
+    </form>
     <form action="{{ route('logged.destroy', $accomodation->id) }}" method="post">
         @csrf
         @method('delete')

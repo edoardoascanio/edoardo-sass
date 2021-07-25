@@ -32,7 +32,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => -10.01,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 1,
             'check_in' => 12,
             'check_out' => 10
@@ -55,7 +55,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => 40.987,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 2,
             'check_in' => 12,
             'check_out' => 10
@@ -78,7 +78,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => -40.543,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 3,
             'check_in' => 13,
             'check_out' => 10
@@ -101,7 +101,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => 40.8765,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 4,
             'check_in' => 14,
             'check_out' => 11
@@ -124,7 +124,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => -440.9876,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 5,
             'check_in' => 15,
             'check_out' => 11
@@ -147,7 +147,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => 1276.4567,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 2,
             'check_in' => 12,
             'check_out' => 10
@@ -170,7 +170,7 @@ class AccomodationSeeder extends Seeder
             'zip' => '00100',
             'lat' => 1276.4567,
             'lon' => 0,
-            'placeholder' => 'ciao',
+            'placeholder' => "",
             'user_id' => 4,
             'check_in' => 12,
             'check_out' => 10

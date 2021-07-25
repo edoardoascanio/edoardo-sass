@@ -48,4 +48,5 @@ Route::prefix('logged')
         Route::match(["PUT", "PATCH"], "accomodation/{id}/update", "AccomodationController@update")->name("update");
         Route::delete('destroy/{id}', "AccomodationController@destroy")->name("destroy");
         Route::get('area-privata/{id}', "UserController@dashboard")->name("dashboard");
+        Route::match(["PUT", "PATCH"],'visibility/{id}', "AccomodationController@visibility")->name("visibility");
     });
