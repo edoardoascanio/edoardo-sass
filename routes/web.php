@@ -49,4 +49,6 @@ Route::prefix('logged')
         Route::delete('destroy/{id}', "AccomodationController@destroy")->name("destroy");
         Route::get('area-privata/{id}', "UserController@dashboard")->name("dashboard");
         Route::match(["PUT", "PATCH"],'visibility/{id}', "AccomodationController@visibility")->name("visibility");
+        Route::get('images/{id}', "ImageController@create")->name("image.create");
+        Route::post('create/images/{id}', "ImageController@store")->name("image.store");
     });

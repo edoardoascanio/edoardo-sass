@@ -9,7 +9,15 @@
     <form action="{{ route("logged.store") }}" method="post" enctype="multipart/form-data">
 
         @csrf
+        <div class="form-group">
+            <label for="customSwitch1">Visibile
+                <input name="visibility" type="radio" value="1" id="true">
+            </label>
 
+            <label for="customSwitch1">Non visibile
+                <input name="visibility" type="radio" value="0" id="false" checked>
+            </label>
+        </div>
         <div class="form-group">
             <label for="title">Titolo</label>
             <input type="text" id="title" name="title" class="form-control">
@@ -65,7 +73,7 @@
 
         {{-- AGGIUNGERE PLACEHOLDER IMG --}}
         <div class="form-group">
-        <label for="placeholder">Carica img di copertina</label>
+            <label for="placeholder">Carica img di copertina</label>
             <input type="file" name="placeholder" id="placeholder" accept=".jpg, .png, .svg, .jpeg">
         </div>
 
@@ -81,6 +89,8 @@
 
         <add-position>
             <add-position>
+
+
 
     </form>
 </div>

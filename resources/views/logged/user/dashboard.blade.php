@@ -9,6 +9,8 @@
     @foreach($accomodations as $accomodation)
     <div class="card" style="width: 18rem;">
         <div class="card-body">
+    <img class="card-img" src="{{ $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg') }}" alt="..." class="img-thumbnail">
+
             <h5 class="card-title">{{ $accomodation->title }}</h5>
             <p class="card-text">{{ $accomodation->description }}</p>
             <div class="row">
@@ -22,6 +24,7 @@
 
             <a href="{{ route('logged.show', ['id' => $accomodation->id]) }}" class="card-link btn btn-primary">Viasualizza</a><br>
             <a href="{{ route('logged.edit', $accomodation->id) }}" class="card-link btn btn-primary">Modifica</a><br>
+            <a href="{{ route('logged.image.create', $accomodation->id) }}" class="card-link btn btn-primary">aggiungi img</a><br>
             @if(count($accomodation->messages) > 0)
             <a href="{{ route('message.index', $accomodation->id) }}" class="btn btn-primary">Hai {{ count($accomodation->messages) }} messaggi</a><br>
             @else

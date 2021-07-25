@@ -64,56 +64,24 @@
             </select>
         </div>
 
-        {{-- <div class="form-group">
+        {{-- AGGIUNGERE PLACEHOLDER IMG --}}
+        <div class="form-group">
         <label for="placeholder">Carica img di copertina</label>
             <input type="file" name="placeholder" id="placeholder" accept=".jpg, .png, .svg, .jpeg">
-        </div> --}}
-
-        <div class="form-group">
-            <label for="country">Paese</label>
-            <input type="text" name="country" id="country" cols="30" rows="10" class="form-control" value="{{ $accomodation->country }}">
         </div>
-
-        <div class="form-group">
-            <label for="city">Citta'</label>
-            <input type="text" name="city" id="city" cols="30" rows="10" class="form-control" value="{{ $accomodation->city }}">
-        </div>
-
-        <div class="form-group">
-
-            <label for="province">Provincia</label>
-            <input type="text" name="province" id="province" cols="30" rows="10" class="form-control" value="{{ $accomodation->province }}">
-        </div>
-
-        <div class="form-group">
-
-            <label for="zip">CAP</label>
-            <input type="text" name="zip" id="zip" cols="30" rows="10" class="form-control" value="{{ $accomodation->zip }}">
-        </div>
-
-        <div class="form-group">
-            <label for="street_name">Indirizzo</label>
-            <input type="text" name="street_name" id="street_name" cols="30" rows="10" class="form-control" value="{{ $accomodation->street_name }}">
-        </div>
-
-        <div class="form-group">
-            <label for="building_number">Numero Civico</label>
-            <input type="number" name="building_number" id="building_number" cols="30" rows="10" class="form-control" value="{{ $accomodation->building_number }}">
-        </div>
-
-        {{-- AGGIUNGERE PLACEHOLDER IMG --}}
 
         {{-- services  --}}
-        @foreach($services as $service)
-        <label for="{{ $service->title }}">
-            <input type="checkbox" name="services[]" value="{{ $service->id }}" id="{{ $service->title }}" {{ $accomodation->services->contains($service) ? 'checked' : '' }}>
-            {{ $service->title }}
-        </label>
-        @endforeach
-
         <div class="form-group">
-            <input type="submit" value="Modifica" class="form-control btn btn-success text-capitalize">
+            @foreach($services as $service)
+            <label for="{{ $service->title }}">
+                <input type="checkbox" name="services[]" value="{{ $service->id }}" id="{{ $service->title }}">
+                {{ $service->title }}
+            </label>
+            @endforeach
         </div>
+
+        <add-position>
+            <add-position>
 
     </form>
 </div>

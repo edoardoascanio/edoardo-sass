@@ -100,23 +100,14 @@
       name="lon"
       id="lon"
     />
-    <div class="form-group">
-      <label for="customSwitch1">Visibile
-                <input name="visibility"  type="radio" value="1" id="true">
-                </label>
-            
-                <label for="customSwitch1">Non visibile
-                <input name="visibility"  type="radio" value="0" id="false">
-                </label>
-    </div>
 
-    <button class="form-control btn btn-success text-capitalize" @click.prevent="callPosition()">Crea</button>
+    <button class="form-control btn btn-success text-capitalize" @click.prevent="callPosition()">INVIA</button>
 
     <div style="display: none" class="form-group" >
       <input
       id="newAccomodation"
         type="submit"
-        value="Crea"
+        value="INVIA"
         class="form-control btn btn-success text-capitalize"
       />
     </div>
@@ -174,7 +165,7 @@ export default {
           setTimeout(() => {
 
             document.getElementById("newAccomodation").click();
-          }, 500)
+          }, 10)
         });
     }
     },

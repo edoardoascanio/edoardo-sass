@@ -2205,15 +2205,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AddPositions",
   data: function data() {
@@ -2246,7 +2237,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.address.position_lon = resp.data.results[0].position.lon;
           setTimeout(function () {
             document.getElementById("newAccomodation").click();
-          }, 500);
+          }, 10);
         });
       }
     }
@@ -38807,8 +38798,6 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
     _c(
       "button",
       {
@@ -38820,10 +38809,10 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Crea")]
+      [_vm._v("INVIA")]
     ),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -38850,33 +38839,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "customSwitch1" } }, [
-        _vm._v("Visibile\n              "),
-        _c("input", {
-          attrs: { name: "visibility", type: "radio", value: "1", id: "true" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "customSwitch1" } }, [
-        _vm._v("Non visibile\n              "),
-        _c("input", {
-          attrs: { name: "visibility", type: "radio", value: "0", id: "false" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "form-group", staticStyle: { display: "none" } },
       [
         _c("input", {
           staticClass: "form-control btn btn-success text-capitalize",
-          attrs: { id: "newAccomodation", type: "submit", value: "Crea" }
+          attrs: { id: "newAccomodation", type: "submit", value: "INVIA" }
         })
       ]
     )
