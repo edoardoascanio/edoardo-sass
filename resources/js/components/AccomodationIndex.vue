@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card bg-light">
+    
       <div class="card-body">
         <form @submit.prevent="filterData">
           <div class="row">
@@ -70,8 +70,14 @@
           </div>
         </form>
       </div>
+    
+ <!-- <div class='control-panel'>
+        <div class='heading'>
+            <img src='https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/032017/untitled-6_25.png?itok=9ZEI6gJ3'>
+        </div>
+        <div id='store-list'></div>
     </div>
-
+    <div class='map' id='map'></div> -->
     <div class="row">
       <div class="col-4">
         <div
@@ -92,13 +98,14 @@
               <span class="badge badge-primary ml-1" v-for="service in accomodation.services"> {{ service.title }} </span>
             </div>
             <a :href="accomodation.link" class="card-link">Visualizza</a>
-            <p v-if="accomodation.views">Views: {{ accomodation.views.length }}</p>
+            <p v-if="accomodation.views">
+              Views: {{ accomodation.views.length }}
+            </p>
           </div>
         </div>
       </div>
 
       <div class="col-8">
-        <!-- <div id="map" class="map"></div> -->
       </div>
     </div>
   </div>
@@ -111,6 +118,10 @@ export default {
     return {
       originalAccomodations: [],
       filteredAccomodations: [],
+      store: {
+        type: "FeatureCollection",
+        features: [],
+      },
       services: [],
       filters: {
         city: "",
@@ -122,6 +133,30 @@ export default {
     };
   },
   methods: {
+    storesAccomodations() {
+      // console.log("store");
+      this.filteredAccomodations.forEach((el) => {
+        // console.log("store in foreach");
+        this.store.features.push({
+          type: "Feature",
+          geometry: {
+            type: "Point",
+            coordinates: [el.lon, el.lat],
+          },
+          properties: {
+            address:
+              el.type_street +
+              el.street_name +
+              el.building_number +
+              ", " +
+              el.zip +
+              " - " +
+              el.province,
+            city: el.city,
+          },
+        });
+      });
+    },
     resetAccomodations() {
       this.filteredAccomodations = this.originalAccomodations;
     },
@@ -131,7 +166,9 @@ export default {
         .then((resp) => {
           this.originalAccomodations = resp.data.results.data;
           this.filteredAccomodations = resp.data.results.data;
-          console.log(this.originalAccomodations);
+          this.storesAccomodations();
+
+          // console.log(this.filteredAccomodations);
         })
         .catch((er) => console.log(er));
     },
@@ -185,7 +222,112 @@ export default {
   mounted() {
     this.callAccomodations();
     this.callServices();
+    setTimeout(this.storesAccomodations(), 1000);
     // this.callMap();
   },
 };
 </script>
+
+<style  scoped>
+html {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    color: #707070;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.map {
+    bottom: 0;
+    left: 25%;
+    position: absolute;
+    top: 0;
+    width: 75%;
+}
+
+.control-panel {
+    -webkit-box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 25%;
+}
+
+.heading {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    -webkit-box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+            box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    position: relative;
+    z-index: 1;
+}
+
+.heading > img {
+    height: auto;
+    margin: 10px 0 8px 0;
+    width: 150px;
+}
+
+#store-list {
+    height: 100%;
+    overflow: auto;
+}
+
+#store-list .list-entries-container .list-entry {
+    border-bottom: 1px solid #e8e8e8;
+    display: block;
+    padding: 10px 50px 10px;
+}
+
+#store-list .list-entries-container .list-entry:nth-of-type(even) {
+    background-color: #f5f5f5;
+}
+
+#store-list .list-entries-container .list-entry:hover,
+#store-list .list-entries-container .list-entry.selected {
+    background-color: #CDDE75;
+    border-bottom-color: #CDDE75;
+}
+
+.ui-accordion h3.ui-accordion-header {
+    background-color: #F4F6F8;
+    border-color: #dddfe0;
+    border-style: solid;
+    border-width: 0 0 3px 0;
+    color: #707070;
+    display: block;
+    font-size: 1.143em;
+    margin: 0;
+    padding: 15px 20px;
+}
+
+.ui-accordion h3.ui-accordion-header.ui-state-active {
+    color: #fff;
+    background-color: #BDD731;
+    border-bottom-color: #a2ba24;
+}
+
+.ui-accordion .ui-accordion-content {
+    border: none;
+    padding: 0;
+}
+
+.ui-icon, .ui-widget-content .ui-icon {
+    margin-right: 15px;
+}
+</style>

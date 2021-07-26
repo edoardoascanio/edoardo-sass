@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class AccomodationMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $message;
+    public $mail;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($mail)
     {
-        $this->message = $data;
+        $this->mail = $mail;
     }
 
     /**
@@ -29,6 +29,6 @@ class AccomodationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.index')->subject($this->message->object_email);
+        return $this->view('mail.index')->subject($this->mail->object_email);
     }
 }
