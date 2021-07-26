@@ -127,6 +127,14 @@ class AccomodationController extends Controller
             // if(isset($data['placeholder'])) {
             //     $accomodation->placeholder = Storage::put('placeholder', $data['placeholder']);
             // }
+            if (key_exists("placeholder", $data)) {
+                if ($accomodation->placeholder) {
+                    Storage::delete($accomodation->placeholder);
+                }
+                $placeholder = Storage::put("placeholder", $data["placeholder"]);
+    
+                $data["placeholder"] = $placeholder;
+            }
             $accomodation->update($data);
 
             if (isset($data['services'])) {

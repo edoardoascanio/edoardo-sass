@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h3>Puoi caricare fino a 4 foto</h3>
+    
     <form action="{{ route('logged.image.store', $id) }}" method="post" enctype="multipart/form-data">
         @csrf
 

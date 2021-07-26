@@ -2013,6 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AccomodationIndex",
   data: function data() {
@@ -38507,7 +38508,13 @@ var render = function() {
                     attrs: { href: accomodation.link }
                   },
                   [_vm._v("Visualizza")]
-                )
+                ),
+                _vm._v(" "),
+                accomodation.views
+                  ? _c("p", [
+                      _vm._v("Views: " + _vm._s(accomodation.views.length))
+                    ])
+                  : _vm._e()
               ])
             ]
           )

@@ -15,7 +15,7 @@ class AccomodationSeeder extends Seeder
    public function run() {
       $accomodations = [
          [
-            'title' => 'L\'intero alloggio (casa)',
+            'title' => "Intero alloggio (casa)",
             'description' => 'Situato a due passi del centro storico di Roma e dalla Stazione Trastevere questo delizioso loft gode di una location privilegiata che permette di esplorare la città a piedi.',
             'number_rooms' => 4,
             'number_bathrooms' => 2,
@@ -30,8 +30,8 @@ class AccomodationSeeder extends Seeder
             'street_name' => 'in arcione',
             'building_number' => 2,
             'zip' => '00100',
-            'lat' => -10.01,
-            'lon' => 0,
+            'lat' => 39.99345,
+            'lon' => 8.55034,
             'placeholder' => "",
             'user_id' => 1,
             'check_in' => 12,

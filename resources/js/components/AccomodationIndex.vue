@@ -92,6 +92,7 @@
               <span class="badge badge-primary ml-1" v-for="service in accomodation.services"> {{ service.title }} </span>
             </div>
             <a :href="accomodation.link" class="card-link">Visualizza</a>
+            <p v-if="accomodation.views">Views: {{ accomodation.views.length }}</p>
           </div>
         </div>
       </div>
