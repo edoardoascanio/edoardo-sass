@@ -1,0 +1,25 @@
+.navbar{
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+
+
+    .nav-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.logo{
+    img{
+        max-width: 100px;
+        width: 100%; 
+    }
+}
+
+.nav-link{
+    margin-left: 5px;
+    padding: 20px 0;
+}

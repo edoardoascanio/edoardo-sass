@@ -1,0 +1,26 @@
+.dash-container{
+    margin-top: 80px;
+    
+    .dash-card{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 20px;
+        background-color: $primary;
+        color: $body-bg;
+
+        a{
+            color: $body-bg;
+            font-size: 16px;
+            i{
+                
+            }
+        }
+    }
+
+    .accomodation-card{
+        width: 100%;
+       
+    }
+}

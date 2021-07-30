@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <a href="{{ route('logged.create') }}">crea</a>
-    <h1>ciao</h1>
-    <h1>{{Auth::user()->name}}</h1>
+<div class="container dash-container">
+    <div class="card dash-card">
+        <h3>Benvenuto  {{Auth::user()->name}}</h3>
+        <a href="{{ route('logged.create') }}"> <i class="fa fa-plus-square-o"></i> <strong>Crea</strong></a>
+    </div>
 
     @foreach($accomodations as $accomodation)
-    <div class="card" style="width: 18rem;">
+    <div class="card accomodation-card" style="width: 18rem;">
         <div class="card-body">
-    <img class="card-img" src="{{ $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg') }}" alt="..." class="img-thumbnail">
+            <img class="card-img" src="{{ $accomodation->placeholder ? asset('storage/' . $accomodation->placeholder) : asset('placeholder/house-placeholder.jpeg') }}" alt="..." class="img-thumbnail">
 
             <h5 class="card-title">{{ $accomodation->title }}</h5>
             <p class="card-text">{{ $accomodation->description }}</p>
