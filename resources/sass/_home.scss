@@ -3,9 +3,7 @@
     .hero {
         padding: 180px 0 100px 0;
         background-image: url('public/imgs/jumbo-1.jpg');
-        background-size: cover;
-        background-position: cover;
-        background-repeat: no-repeat;
+        @include background-img;
 
         .card {
             border-radius: 10px;
@@ -53,7 +51,8 @@
             }
 
             .caption {
-                margin-left: 10px;
+                margin: 0 0 40px 10px;
+
             }
         }
     }
@@ -84,7 +83,7 @@
             }
 
             .caption {
-                margin-left: 10px;
+                margin-bottom: 50px;
             }
         }
     }
@@ -122,10 +121,8 @@
         .reg-img {
             padding: 190px 0;
             background-image: url('imgs/boolbnb-register.jpg');
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: cover;
             border-radius: 10px;
+            @include background-img;
 
             .reg-btn {
                 @include blu-btn

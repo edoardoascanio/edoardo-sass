@@ -11027,8 +11027,8 @@ footer {
   padding: 180px 0 100px 0;
   background-image: url(/images/jumbo-1.jpg?7e0bd9ecd34cfd9eeae1d4d25bf076d0);
   background-size: cover;
-  background-position: cover;
   background-repeat: no-repeat;
+  background-position: cover;
 }
 
 .home-container .hero .card {
@@ -11081,7 +11081,7 @@ footer {
 }
 
 .home-container .city .city-img .caption {
-  margin-left: 10px;
+  margin: 0 0 40px 10px;
 }
 
 .home-container .house-type {
@@ -11132,7 +11132,7 @@ footer {
 }
 
 .home-container .house-type .type-content .caption {
-  margin-left: 10px;
+  margin-bottom: 50px;
 }
 
 .home-container .servicies {
@@ -11169,10 +11169,10 @@ footer {
 .home-container .register .reg-img {
   padding: 190px 0;
   background-image: url(/images/boolbnb-register.jpg?b6c0414cdce6f842cc200b7e217ebd0b);
-  background-size: 100%;
+  border-radius: 10px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: cover;
-  border-radius: 10px;
 }
 
 .home-container .register .reg-img .reg-btn {
@@ -11190,9 +11190,8 @@ footer {
   width: 100%;
   height: 100vh;
   padding-top: 150px;
-  overflow: hidden;
   background-image: url(/images/jumbo-cover.jpg?7a988e7bb1718309c0b8902b65b6912e);
-  background-size: 100%;
+  background-size: cover;
   background-position: cover;
   background-repeat: no-repeat;
 }

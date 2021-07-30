@@ -7,7 +7,7 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-                <div class="card col-lg-4 hidden-md">
+                <div class="card col-lg-4 col-md-12 col-sm-12">
                     <div class="card-body">
                         <h1>Affitti per le tue vacanze</h1>
                         <p>Prenota un alloggio su Boolbnb</p>
@@ -26,28 +26,28 @@
 
             <div class="city-img row">
 
-                <div class="city-card col-md-3">
+                <div class="city-card col-md-3 col-sm-6">
                     <img src="{{asset('imgs/Roma.jpg')}}" alt="homepage">
                     <div class="caption">
                         <strong>Roma</strong>
                     </div>
                 </div>
 
-                <div class="city-card col-md-3">
+                <div class="city-card col-md-3 col-sm-6">
                     <img src="{{asset('imgs/Milano.jpg')}}" alt="homepage">
                     <div class="caption">
                         <strong>Milano</strong>
                     </div>
                 </div>
 
-                <div class="city-card col-md-3">
+                <div class="city-card col-md-3 col-sm-6">
                     <img src="{{asset('imgs/venezia.jpg')}}" alt="homepage">
                     <div class="caption">
                         <strong>Venezia</strong>
                     </div>
                 </div>
 
-                <div class="city-card col-md-3">
+                <div class="city-card col-md-3 col-sm-6">
                     <img src="{{asset('imgs/firenze.jpg')}}" alt="homepage">
                     <div class="caption">
                         <strong>Firenze</strong>

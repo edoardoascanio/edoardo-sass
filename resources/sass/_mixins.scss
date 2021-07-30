@@ -37,13 +37,18 @@
     }
 }
 
+@mixin background-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: cover;
+}
+
 @mixin background-page {
     width: 100%;
     height: 100vh;
     padding-top: 150px;
-    overflow: hidden;
     background-image: url(imgs/jumbo-cover.jpg);
-    background-size: 100%;
+    background-size: cover;
     background-position: cover;
     background-repeat: no-repeat;
 }
