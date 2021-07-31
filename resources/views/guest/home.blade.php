@@ -7,7 +7,7 @@
     <section class="hero">
         <div class="container">
             <div class="row">
-                <div class="card col-lg-4 col-md-12 col-sm-12">
+                <div class="card col-lg-4 col-md-6 col-sm-12 col-xs-12">
                     <div class="card-body">
                         <h1>Affitti per le tue vacanze</h1>
                         <p>Prenota un alloggio su Boolbnb</p>
@@ -101,93 +101,34 @@
 
     <section class="servicies">
         <div class="container">
-            <h3>Servizi che puoi trovare nelle case</h3>
+            <h3>Servizi che potresti trovare </h3>
 
             <div class="row text-center">
 
-                <div class="servicies-card col-lg-2 col-md-3">
+                <div class="servicies-card col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <i class="fa fa-cutlery" aria-hidden="true"></i>
                     <p><strong>Cucina</strong></p>
                 </div>
 
-                <div class="servicies-card col-lg-2 col-md-3">
+                <div class="servicies-card col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <i class="fa fa-wifi" aria-hidden="true"></i>
                     <p><strong>Wi-fi</strong></p>
                 </div>
 
-                <div class="servicies-card col-lg-2 col-md-3">
+                <div class="servicies-card col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <i class="fa fa-bath" aria-hidden="true"></i>
                     <p><strong>Piscina</strong></p>
                 </div>
 
-                <div class="servicies-card col-lg-2 col-md-3">
+                <div class="servicies-card col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                     <p><strong>Parcheggio gratuito</strong></p>
                 </div>
 
-                <div class="servicies-card col-lg-2 col-md-3">
+                <div class="servicies-card col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <i class="fa fa-snowflake-o" aria-hidden="true"></i>
                     <p><strong>Aria condizionata</strong></p>
                 </div>
-
-            
-
-            
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-cutlery" aria-hidden="true"></i>
-                    <p><strong>Riscaldamento</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-wifi" aria-hidden="true"></i>
-                    <p><strong>Lavatrice</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-bath" aria-hidden="true"></i>
-                    <p><strong>Lavastoviglie</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-product-hunt" aria-hidden="true"></i>
-                    <p><strong>Ingresso privato</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-snowflake-o" aria-hidden="true"></i>
-                    <p><strong>Balcone</strong></p>
-                </div>
-
-            
-
-            
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-cutlery" aria-hidden="true"></i>
-                    <p><strong>Idromassaggio</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-wifi" aria-hidden="true"></i>
-                    <p><strong>Acqua calda</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-bath" aria-hidden="true"></i>
-                    <p><strong>Animali ammessi</strong></p>
-                </div>
-
-                <div class="servicies-card col-lg-2 col-md-3">
-                    <i class="fa fa-product-hunt" aria-hidden="true"></i>
-                    <p><strong>Essenziali</strong></p>
-                </div>
-
-                <div class="servicies-card col-md-2 col-sm-6">
-                    <i class="fa fa-snowflake-o" aria-hidden="true"></i>
-                    <p><strong>Cassaforte</strong></p>
-                </div>
-
             </div>
         </div>
     </section>

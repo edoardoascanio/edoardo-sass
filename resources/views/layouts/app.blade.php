@@ -72,7 +72,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('logged.dashboard', ['id' => Auth::user()->id]) }}">Area Privata</a>
+                                <div class="area"><a class="area" href="{{ route('logged.dashboard', ['id' => Auth::user()->id]) }}">Area Privata</a></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}

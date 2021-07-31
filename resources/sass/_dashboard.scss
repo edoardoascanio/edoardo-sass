@@ -1,7 +1,7 @@
-.dash-container{
+.dash-container {
     margin-top: 80px;
-    
-    .dash-card{
+
+    .dash-card {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -10,17 +10,20 @@
         background-color: $primary;
         color: $body-bg;
 
-        a{
+        a {
             color: $body-bg;
             font-size: 16px;
-            i{
-                
-            }
         }
     }
 
-    .accomodation-card{
-        width: 100%;
-       
+    .accomodation-btn,.message, .visua {
+        margin-top: 20px;
+
+        .card-link {
+           width: 80%;
+           margin: auto;
+           @include blu-btn
+        }
     }
 }
+

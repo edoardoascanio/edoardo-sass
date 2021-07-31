@@ -1,10 +1,10 @@
-.navbar{
+.navbar {
     width: 100%;
     position: fixed;
     z-index: 1;
 
 
-    .nav-container{
+    .nav-container {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -12,14 +12,31 @@
     }
 }
 
-.logo{
-    img{
+.logo {
+    img {
         max-width: 100px;
-        width: 100%; 
+        width: 100%;
     }
 }
 
-.nav-link{
+.nav-link {
     margin-left: 5px;
     padding: 20px 0;
+}
+
+
+.dropdown-menu {
+    .area{
+        a {
+            text-decoration: none;
+            width: 100%;
+            padding: 8px 56px 8px 20px;
+            color: black;
+            
+            &:hover {
+                background-color: #e9ecef;
+    
+            }
+        }
+    }
 }
